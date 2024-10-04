@@ -7,4 +7,4 @@
 | Avedaño Andres | Backend|...|
 | Romero Nicolas | Frontend|[Nico](https://www.linkedin.com/in/jnolmos/)|
 | Rúa Alejandro |Backend |[Ale](https://www.linkedin.com/in/alejandro-rua/)|
-| Soto Jesús | Frontend |[Jesus](https://www.linkedin.com/in/jnolmos/)|
+| Soto Jesús | Frontend |[Jesus](https://www.linkedin.com/in/sotopaguayj/)|
