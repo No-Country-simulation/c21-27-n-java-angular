@@ -3,7 +3,7 @@
 
 ## Recursos
 
-- [Miro Board]()
+- [Miro Board](https://miro.com/app/board/uXjVLX_kJ5I=/?share_link_id=320960808785)
 - [User Stories](https://docs.google.com/spreadsheets/d/15LjQ9-UaS1f0edtAv2C0y6f1_7yT3MvyuO5X0hticMM/edit?hl=es&gid=1611682690#gid=1611682690)
 - [Technical Tasks](https://docs.google.com/spreadsheets/d/15LjQ9-UaS1f0edtAv2C0y6f1_7yT3MvyuO5X0hticMM/edit?hl=es&gid=1197987245#gid=1197987245)
 - [API Contract](https://docs.google.com/spreadsheets/d/15LjQ9-UaS1f0edtAv2C0y6f1_7yT3MvyuO5X0hticMM/edit?hl=es&gid=1882280493#gid=1882280493)
