@@ -51,9 +51,9 @@
     line-height: 100%;
     letter-spacing: -0.125rem;
     margin: 0;
-    font-family: "Inter Tight", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-      Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
-      "Segoe UI Symbol";
+    font-family: "Inter Tight", -apple-system, BlinkMacSystemFont, "Segoe UI",
+      Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji",
+      "Segoe UI Emoji", "Segoe UI Symbol";
   }
 
   p {
@@ -226,37 +226,80 @@
         </defs>
       </svg>
       <h1>Hello, {{ title }}</h1>
-      <p>Congratulations! Your app is running. 🎉</p>
+      <p>🎉 Congratulations! Your app is running and have:</p>
+      <div class="flex flex-col items-start gap-2 font-semibold mt-3">
+        <button class="bg-sky-100 text-sky-500 rounded-full px-2 py-1">
+          TailwindCSS
+        </button>
+        <button [className]="button({ size: 'sm', color: 'secondary' })">
+          Tailwind Variants
+        </button>
+        <span class="bg-violet-100 text-violet-500 rounded-sm px-2 py-1">
+          Yesicon
+        </span>
+        <div class="flex items-center gap-2 text-xl">
+          <span
+            class="icon-[line-md--bell-twotone]"
+            role="img"
+            aria-hidden="true"
+          ></span>
+          <span
+            class="icon-[line-md--chat-round-dots-twotone]"
+            role="img"
+            aria-hidden="true"
+          ></span>
+          <span
+            class="icon-[svg-spinners--blocks-shuffle-2]"
+            role="img"
+            aria-hidden="true"
+          ></span>
+          <span
+            class="icon-[ri--apple-fill]"
+            role="img"
+            aria-hidden="true"
+          ></span>
+          <span
+            class="i-uil-comment-alt-dots"
+            role="img"
+            aria-hidden="true"
+          ></span>
+          <span
+            class="icon-[vscode-icons--file-type-ai]"
+            role="img"
+            aria-hidden="true"
+          ></span>
+          <span
+            class="icon-[vscode-icons--file-type-cuda]"
+            role="img"
+            aria-hidden="true"
+          ></span>
+        </div>
+      </div>
     </div>
     <div class="divider" role="separator" aria-label="Divider"></div>
     <div class="right-side">
       <div class="pill-group">
-        @for (item of [
-          { title: 'Explore the Docs', link: 'https://angular.dev' },
-          { title: 'Learn with Tutorials', link: 'https://angular.dev/tutorials' },
-          { title: 'CLI Docs', link: 'https://angular.dev/tools/cli' },
-          { title: 'Angular Language Service', link: 'https://angular.dev/tools/language-service' },
-          { title: 'Angular DevTools', link: 'https://angular.dev/tools/devtools' },
-        ]; track item.title) {
-          <a
-            class="pill"
-            [href]="item.link"
-            target="_blank"
-            rel="noopener"
+        @for (item of [ { title: 'Explore the Docs', link: 'https://angular.dev'
+        }, { title: 'Learn with Tutorials', link:
+        'https://angular.dev/tutorials' }, { title: 'CLI Docs', link:
+        'https://angular.dev/tools/cli' }, { title: 'Angular Language Service',
+        link: 'https://angular.dev/tools/language-service' }, { title: 'Angular
+        DevTools', link: 'https://angular.dev/tools/devtools' }, ]; track
+        item.title) {
+        <a class="pill" [href]="item.link" target="_blank" rel="noopener">
+          <span>{{ item.title }}</span>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            height="14"
+            viewBox="0 -960 960 960"
+            width="14"
+            fill="currentColor"
           >
-            <span>{{ item.title }}</span>
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              height="14"
-              viewBox="0 -960 960 960"
-              width="14"
-              fill="currentColor"
-            >
-              <path
-                d="M200-120q-33 0-56.5-23.5T120-200v-560q0-33 23.5-56.5T200-840h280v80H200v560h560v-280h80v280q0 33-23.5 56.5T760-120H200Zm188-212-56-56 372-372H560v-80h280v280h-80v-144L388-332Z"
-              />
-            </svg>
-          </a>
+            <path
+              d="M200-120q-33 0-56.5-23.5T120-200v-560q0-33 23.5-56.5T200-840h280v80H200v560h560v-280h80v280q0 33-23.5 56.5T760-120H200Zm188-212-56-56 372-372H560v-80h280v280h-80v-144L388-332Z"
+            />
+          </svg>
+        </a>
         }
       </div>
       <div class="social-links">
@@ -331,6 +374,5 @@
 <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
 <!-- * * * * * * * * * * End of Placeholder  * * * * * * * * * * * * -->
 <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
-
 
 <router-outlet />
