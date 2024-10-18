@@ -20,7 +20,6 @@ public class Users {
     @Column(nullable = false)
     private String password;
 
-
     @OneToOne(mappedBy = "user")
     private Account accounts;
 
