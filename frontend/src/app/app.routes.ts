@@ -1,9 +1,10 @@
 import { Routes } from '@angular/router';
+
 import { PATHS } from './config/paths';
 import { LoginComponent } from './core/login/login.component';
-import { ReceiptComponent } from './features/account/receipt/receipt.component';
-import { TransactionsComponent } from './features/account/transactions/transactions.component';
 import { DashboardComponent } from './features/dashboard/dashboard.component';
+import { HistoryComponent } from './features/transactions/history/history.component';
+import { ReceiptComponent } from './features/transactions/receipt/receipt.component';
 import { TransferComponent } from './features/transfer/transfer.component';
 
 export const routes: Routes = [
@@ -23,14 +24,14 @@ export const routes: Routes = [
     title: PATHS.FEATURES.DASHBOARD.title,
   },
   {
-    path: PATHS.FEATURES.ACCOUNT.TRANSACTIONS.path,
-    component: TransactionsComponent,
-    title: PATHS.FEATURES.ACCOUNT.TRANSACTIONS.title,
+    path: PATHS.FEATURES.TRANSACTIONS.HISTORY.path,
+    component: HistoryComponent,
+    title: PATHS.FEATURES.TRANSACTIONS.HISTORY.title,
   },
   {
-    path: PATHS.FEATURES.ACCOUNT.RECEIPT.path,
+    path: PATHS.FEATURES.TRANSACTIONS.RECEIPT.path,
     component: ReceiptComponent,
-    title: PATHS.FEATURES.ACCOUNT.RECEIPT.title,
+    title: PATHS.FEATURES.TRANSACTIONS.RECEIPT.title,
   },
   {
     path: PATHS.FEATURES.TRANSFER.path,

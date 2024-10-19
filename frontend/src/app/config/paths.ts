@@ -4,13 +4,14 @@ export const PATHS = {
   },
   FEATURES: {
     DASHBOARD: { path: 'dashboard', title: 'Inicio | OinkBank' },
-    ACCOUNT: {
-      TRANSACTIONS: {
-        path: 'account/transactions',
-        title: 'Todos los Movimientos | OinkBank',
+    ACCOUNT: {},
+    TRANSACTIONS: {
+      HISTORY: {
+        path: 'transaction/history',
+        title: 'Historial de Transacciones | OinkBank',
       },
       RECEIPT: {
-        path: 'account/transaction/:receiptId',
+        path: 'transaction/receipt/:receiptId',
         title: 'Comprobante | OinkBank',
       },
     },
