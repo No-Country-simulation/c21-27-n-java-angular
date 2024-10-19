@@ -1,13 +1,19 @@
 export const PATHS = {
   CORE: {
-    LOGIN: 'login',
+    LOGIN: { path: 'login', title: 'Iniciar Sesión | OinkBank' },
   },
   FEATURES: {
-    DASHBOARD: 'dashboard',
+    DASHBOARD: { path: 'dashboard', title: 'Inicio | OinkBank' },
     ACCOUNT: {
-      TRANSACTIONS: 'account/transactions',
-      RECEIPT: (receiptId: string) => `account/${receiptId}`,
+      TRANSACTIONS: {
+        path: 'account/transactions',
+        title: 'Todas los Movimientos | OinkBank',
+      },
+      RECEIPT: {
+        path: 'account/:receiptId',
+        title: 'Comprobante | OinkBank',
+      },
     },
-    TRANSFER: 'transfer',
+    TRANSFER: { path: 'transfer', title: 'Transferencia | OinkBank' },
   },
 };
