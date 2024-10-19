@@ -1,0 +1,36 @@
+:host {
+  position: fixed;
+  bottom: 8vh;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.nav {
+  @apply flex justify-center items-center gap-1 lg:flex-col;
+  @apply bg-ob-black p-1 rounded-full shadow;
+
+  &__button {
+    @apply rounded-full p-1 h-16 w-16;
+    @apply bg-zinc-800 text-ob-gray;
+    @apply transition-all ease-in;
+    @apply duration-75;
+
+    &--active {
+      @apply bg-ob-main-bright-green text-ob-black;
+      @apply -translate-y-2 lg:-translate-y-0;
+    }
+
+    span[class^="icon"] {
+      @apply mt-1 text-2xl;
+    }
+  }
+}
+
+@media (width > 1024px) {
+  :host {
+    left: 2vh;
+    top: 50%;
+    bottom: auto;
+    transform: translateY(-50%);
+  }
+}
