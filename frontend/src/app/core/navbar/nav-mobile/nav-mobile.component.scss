@@ -1,0 +1,7 @@
+.nav {
+  @apply flex gap-4;
+
+  &__item {
+    @apply px-2 py-1 bg-gray-400 hover:bg-gray-300 rounded-full;
+  }
+}
