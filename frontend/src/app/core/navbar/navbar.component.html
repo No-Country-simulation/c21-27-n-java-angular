@@ -1,13 +1,16 @@
 <nav class="nav">
-  <button routerLink="dashboard" class="nav__button">
+  <button routerLink="dashboard" routerLinkActive="nav__button--active" class="nav__button"
+    [routerLinkActiveOptions]="{ exact: true }">
     <span class="icon-[ant-design--home-filled]"></span>
   </button>
 
-  <button routerLink="transfer" class="nav__button">
+  <button routerLink="transfer" routerLinkActive="nav__button--active" class="nav__button"
+    [routerLinkActiveOptions]="{ exact: true }">
     <span class="icon-[ant-design--dollar-circle-filled]"></span>
   </button>
 
-  <button routerLink="transaction/history" class="nav__button">
+  <button routerLink="transaction/history" routerLinkActive="nav__button--active" class="nav__button"
+    [routerLinkActiveOptions]="{ exact: true }">
     <span class="icon-[ant-design--profile-filled]"></span>
   </button>
 </nav>
