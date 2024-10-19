@@ -6,7 +6,14 @@ module.exports = {
     files: ["./src/**/*.{html,ts}"],
   },
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        "dark-green": "#17412D",
+        "medium-green": "#326D3C",
+        "bright-green": "#70D560",
+        "light-green": "#A9E6A0",
+      },
+    },
   },
   plugins: [addDynamicIconSelectors()],
 };
