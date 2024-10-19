@@ -7,17 +7,17 @@
 
 .nav {
   @apply flex justify-center items-center gap-1 lg:flex-col;
-  @apply bg-black p-1 rounded-full shadow;
+  @apply bg-ob-black p-1 rounded-full shadow;
 
   &__button {
-    @apply rounded-full p-1 h-14 w-14;
-    @apply bg-gray-900 text-white;
+    @apply rounded-full p-1 h-16 w-16;
+    @apply bg-zinc-800 text-ob-gray;
     @apply transition-all ease-in;
-    @apply duration-200;
+    @apply duration-75;
 
     &--active {
-      @apply bg-green-700 text-white shadow-sm shadow-green-600;
-      @apply -translate-y-3 lg:-translate-y-0;
+      @apply bg-ob-main-bright-green text-ob-black;
+      @apply -translate-y-2 lg:-translate-y-0;
     }
 
     span[class^="icon"] {
