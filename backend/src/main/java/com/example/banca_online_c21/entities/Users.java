@@ -1,5 +1,6 @@
 package com.example.banca_online_c21.entities;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -21,6 +22,7 @@ public class Users {
     private String password;
 
     @OneToOne(mappedBy = "user")
+    @JsonManagedReference
     private Account accounts;
 
 }
