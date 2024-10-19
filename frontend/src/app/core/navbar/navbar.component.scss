@@ -1,0 +1,20 @@
+:host {
+  position: fixed;
+  bottom: 8vh;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.nav {
+  @apply flex justify-center items-center gap-1;
+  @apply bg-black p-1 rounded-full shadow;
+
+  &__button {
+    @apply rounded-full p-1 h-14 w-14;
+    @apply bg-gray-900 active:bg-green-500 text-white;
+
+    span[class^="icon"] {
+      @apply mt-1 text-2xl;
+    }
+  }
+}
