@@ -1,0 +1,16 @@
+.link {
+  @apply flex items-center pr-1 transition-colors bg-transparent rounded hover:bg-ob-secondary-light-green/5;
+
+  span[class^="icon"] {
+    @apply text-4xl text-ob-secondary-light-green;
+  }
+  &__info {
+    @apply flex flex-col justify-center;
+    &__name {
+      @apply text-sm leading-3 text-ob-secondary-light-green;
+    }
+    &__role {
+      @apply text-xs text-ob-main-bright-green;
+    }
+  }
+}
