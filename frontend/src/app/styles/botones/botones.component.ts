@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { UI_Button } from '../buttonHomeVerde';
+import { UI_Button_Black } from '../buttonHomeNegro';
 
 @Component({
   selector: 'app-botones',
@@ -9,5 +10,6 @@ import { UI_Button } from '../buttonHomeVerde';
   styleUrl: './botones.component.scss'
 })
 export class BotonesComponent {
-uiButton = UI_Button;
+  uiButton = UI_Button;
+  uiButtonBlack = UI_Button_Black;
 }
