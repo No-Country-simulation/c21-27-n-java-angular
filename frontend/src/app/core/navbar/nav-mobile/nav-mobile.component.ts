@@ -1,8 +1,6 @@
 import { Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
 
-import { UI_Button_Black } from '../../../styles/buttonHomeNegro';
-import { UI_Button } from '../../../styles/buttonHomeVerde';
 
 
 @Component({
