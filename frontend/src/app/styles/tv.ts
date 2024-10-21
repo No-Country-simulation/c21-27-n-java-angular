@@ -1,6 +1,6 @@
 import { tv } from 'tailwind-variants';
 
-export const BO_Button = tv({
+export const OB_Button = tv({
   base: 'font-medium bg-blue-500 text-white rounded-full active:opacity-80 px-4 py-1',
   variants: {
     color: {
@@ -24,3 +24,5 @@ export const BO_Button = tv({
     color: 'primary',
   },
 });
+
+
