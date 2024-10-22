@@ -1,11 +1,13 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { NavMobileComponent } from './core/navbar/nav-mobile/nav-mobile.component';
+import { NavbarComponent } from './core/navbar/navbar.component';
+import { FooterComponent } from './core/footer/footer.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, NavMobileComponent],
-  template: `<app-nav-mobile class="nav-mobile" /> <router-outlet />`,
+  imports: [RouterOutlet, NavbarComponent, FooterComponent],
+  templateUrl: 'app.component.html',
+  styleUrl: 'app.component.scss',
 })
 export class AppComponent {}
