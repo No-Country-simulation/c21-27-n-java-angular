@@ -7,6 +7,7 @@ import com.example.banca_online_c21.repositories.UsersRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -24,8 +25,8 @@ public class UsersController {
     @Autowired
     private AccountRepository accountRepository; // Asegúrate de tener este repositorio
 
-//    @Autowired
-//    private BCryptPasswordEncoder passwordEncoder;
+    @Autowired
+    private PasswordEncoder passwordEncoder; // Usaremos este para encriptar contraseñas
 
 
     @GetMapping
@@ -156,5 +157,46 @@ public class UsersController {
         accountNumber.append(fourthLetter); // Cuarta letra al final
 
         return accountNumber.toString();
+    }
+
+
+    @PostMapping("/register")
+    public ResponseEntity<Users> registerUser(@RequestBody Users user) {
+        // Verificar si el nombre de usuario ya existe
+        if (userRepository.findByUsername(user.getUsername()).isPresent()) {
+            return ResponseEntity.status(409).build(); // 409 Conflict
+        }
+
+        // Encriptar la contraseña antes de guardar
+        user.setPassword(passwordEncoder.encode(user.getPassword()));
+        Users savedUser = userRepository.save(user);
+
+        // Crear una cuenta automáticamente
+        Account newAccount;
+        do {
+            newAccount = new Account();
+            newAccount.setAccountNumber(generateRandomAccountNumber());
+            newAccount.setUser (savedUser );
+            newAccount.setBalance(0.0); // Balance inicial de cero
+        } while (accountRepository.existsByAccountNumber(newAccount.getAccountNumber())); // Verificar si la cuenta ya existe
+
+        // Guardar la cuenta
+        accountRepository.save(newAccount);
+
+        return ResponseEntity.ok(savedUser );
+    }
+
+    @PostMapping("/login")
+    public ResponseEntity<String> loginUser(@RequestBody Users user) {
+        // Encontrar el usuario por username
+        Users existingUser = userRepository.findByUsername(user.getUsername())
+                .orElseThrow(() -> new RuntimeException("Usuario no encontrado"));
+
+        // Verificar si la contraseña es correcta
+        if (!passwordEncoder.matches(user.getPassword(), existingUser.getPassword())) {
+            return ResponseEntity.status(401).body("Contraseña incorrecta");
+        }
+
+        return ResponseEntity.ok("Login exitoso");
     }
 }
