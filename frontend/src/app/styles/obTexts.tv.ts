@@ -1,24 +1,23 @@
 import { tv, VariantProps } from 'tailwind-variants';
 
 export const OB_HEADINGS = tv({
-  base: '',
+  base: 'font-bold tracking-tight',
   variants: {
-    size: {
-      mobile: '',
-      desktop: '',
+    tag: {
+      h1: 'tracking-tight text-2xl lg:text-3xl lg:text-ob-title-medium-green',
+      h2: 'tracking-tight',
     },
     color: {},
   },
 });
 
 export const OB_PARAGRAPHS = tv({
-  base: '',
+  base: 'text-ob-black',
   variants: {
-    size: {
-      mobile: '',
-      desktop: '',
+    color: {
+      primary: 'text-ob-main-bright-green',
+      danger: 'text-ob-danger-red',
     },
-    color: {},
   },
 });
 
