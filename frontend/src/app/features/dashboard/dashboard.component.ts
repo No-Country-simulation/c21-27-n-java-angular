@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
-import { AccountBalanceComponent } from './components/account-balance/account-balance.component';
+
 import { OB_TITLES } from '../../styles/titles.tv';
+import { AccountBalanceComponent } from './components/account-balance/account-balance.component';
 
 @Component({
   selector: 'app-dashboard',

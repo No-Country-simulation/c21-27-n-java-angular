@@ -1,3 +1,4 @@
 {
-  "conventionalCommits.scopes": ["fe"]
+  "conventionalCommits.scopes": ["fe"],
+  "editor.cursorStyle": "block"
 }
