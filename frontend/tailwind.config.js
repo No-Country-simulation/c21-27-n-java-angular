@@ -7,15 +7,16 @@ module.exports = {
   },
   theme: {
     extend: {
-      iconImage: {
-        'question': "url('src/assets/question-mark-circle.png')"
-      },
       colors: {
-        'main': '#70D560',
-        'secondary': '#A9E6A0',
-        'dark': '#1C1B17',
-
-      }
+        "ob-main-bright-green": "#70D560",
+        "ob-secondary-light-green": "#A9E6A0",
+        "ob-terciary-dark-green": "#17412D",
+        "ob-title-medium-green": "#326D3C",
+        "ob-danger-red": "#ED6868",
+        "ob-white": "#FCFCFC",
+        "ob-gray": "#BABABA",
+        "ob-black": "#161616",
+      },
     },
   },
   plugins: [addDynamicIconSelectors()],
