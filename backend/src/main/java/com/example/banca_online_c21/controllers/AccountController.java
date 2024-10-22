@@ -1,6 +1,7 @@
 package com.example.banca_online_c21.controllers;
 
 import com.example.banca_online_c21.entities.Account;
+import com.example.banca_online_c21.entities.TransactionEntity;
 import com.example.banca_online_c21.repositories.AccountRepository;
 import com.example.banca_online_c21.services.AccountService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -61,6 +62,14 @@ public class AccountController {
         var account = this.accountRepository.findByAccountNumber(accountNumber).orElseThrow();
         balance.put("balance", account.getBalance());
         return ResponseEntity.ok(balance);
+    }
+
+    @GetMapping("transactions/{accountNumber}")
+    public ResponseEntity<Map<String, List<TransactionEntity>>> getTransactions(@PathVariable String accountNumber) {
+        Map<String, List<TransactionEntity>> transactions = new HashMap<>();
+        var account = this.accountRepository.findByAccountNumber(accountNumber).orElseThrow();
+        transactions.put("transactions", account.getTransactions());
+        return ResponseEntity.ok(transactions);
     }
 
 }
