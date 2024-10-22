@@ -1,0 +1,11 @@
+:host {
+  @apply flex flex-col gap-1 justify-center items-center w-fit;
+}
+
+.ob-btn {
+  @apply select-none;
+}
+
+.ob-label {
+  @apply text-xs select-none;
+}
