@@ -1,11 +1,11 @@
 import { tv, VariantProps } from 'tailwind-variants';
 
 export const OB_TEXT_HEADINGS = tv({
-  base: 'font-bold tracking-tight',
+  base: 'tracking-tight',
   variants: {
     tag: {
-      h1: 'tracking-tight text-2xl lg:text-3xl lg:text-ob-title-medium-green',
-      h2: 'tracking-tight',
+      h1: 'text-ob-title-medium-green text-3xl lg:text-4xl',
+      h2: '',
     },
     color: {},
   },

@@ -1,0 +1,12 @@
+:host {
+  @apply hidden lg:flex;
+  @apply w-fit gap-2 justify-center items-center;
+  @apply my-16;
+}
+
+.img {
+  @apply w-20 h-auto;
+}
+
+.text {
+}
