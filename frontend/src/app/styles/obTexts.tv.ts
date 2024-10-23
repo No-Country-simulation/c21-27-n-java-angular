@@ -1,6 +1,6 @@
 import { tv, VariantProps } from 'tailwind-variants';
 
-export const OB_HEADINGS = tv({
+export const OB_TEXT_HEADINGS = tv({
   base: 'font-bold tracking-tight',
   variants: {
     tag: {
@@ -11,7 +11,7 @@ export const OB_HEADINGS = tv({
   },
 });
 
-export const OB_PARAGRAPHS = tv({
+export const OB_TEXT_PARAGRAPHS = tv({
   base: 'text-ob-black',
   variants: {
     color: {
@@ -21,5 +21,10 @@ export const OB_PARAGRAPHS = tv({
   },
 });
 
-export type ObHeadingTypes = VariantProps<typeof OB_HEADINGS>;
-export type ObParagrhaphTypes = VariantProps<typeof OB_PARAGRAPHS>;
+export const OB_TEXT_BALANCE = tv({
+  base: 'text-5xl font-bold tracking-wide',
+});
+
+export type ObHeadingTypes = VariantProps<typeof OB_TEXT_HEADINGS>;
+export type ObParagrhaphTypes = VariantProps<typeof OB_TEXT_PARAGRAPHS>;
+export type ObBalanceTypes = VariantProps<typeof OB_TEXT_BALANCE>;
