@@ -11,39 +11,26 @@ import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig {
 
-//    @Bean
-//    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-//        http
-//                .csrf(csrf -> csrf.disable()) // Deshabilitar CSRF para pruebas en Postman
-//                .authorizeHttpRequests(authorize -> authorize
-//                        .requestMatchers("/api/users/register").permitAll() // Permitir registro sin autenticación
-//                        .requestMatchers("/api/users/login").permitAll() // Permitir login sin autenticación
-//                        .requestMatchers("/api/users").permitAll()
-//                        .anyRequest().authenticated() // Proteger los demás endpoints
-//                )
-//                .formLogin(formLogin -> formLogin.disable()); // No usar login basado en formularios
-//
-//        return http.build();
-//    }
-
     @Autowired
-    private JwtUtil jwtUtil;
+    private JwtRequestFilter jwtRequestFilter;  // Inyectar el filtro JWT
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         return http
                 .csrf(csrf -> csrf.disable())
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/api/auth/login").permitAll()
-                        .requestMatchers("/api/users/register").permitAll()
-                        .anyRequest().authenticated()
+                        .requestMatchers("/api/auth/login").permitAll()  // Permitir login sin autenticación
+                        .requestMatchers("/api/users/register").permitAll()  // Permitir registro sin autenticación
+                        .anyRequest().authenticated()  // Proteger los demás endpoints
                 )
-                .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
+                .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))  // No crear sesión
+                .addFilterBefore(jwtRequestFilter, UsernamePasswordAuthenticationFilter.class)  // Agregar el filtro JWT
                 .build();
     }
 

@@ -3,6 +3,7 @@ package com.example.banca_online_c21.controllers;
 import com.example.banca_online_c21.config.JwtUtil;
 import com.example.banca_online_c21.entities.AuthenticationRequest;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.BadCredentialsException;
@@ -34,7 +35,9 @@ public class AuthController {
                     new UsernamePasswordAuthenticationToken(authenticationRequest.getUsername(), authenticationRequest.getPassword())
             );
         } catch (BadCredentialsException e) {
-            throw new Exception("Incorrect username or password", e);
+            // Enviar un mensaje de error en caso de credenciales incorrectas
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Incorrect username or password");
+
         }
 
         final UserDetails userDetails = userDetailsService.loadUserByUsername(authenticationRequest.getUsername());
@@ -47,10 +50,12 @@ public class AuthController {
         private String jwt;
 
         public AuthenticationResponse(String jwt) {
+
             this.jwt = jwt;
         }
 
         public String getJwt() {
+
             return jwt;
         }
     }
