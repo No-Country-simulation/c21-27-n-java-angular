@@ -19,10 +19,16 @@
     "importHelpers": true,
     "target": "ES2022",
     "module": "ES2022",
-    "lib": [
-      "ES2022",
-      "dom"
-    ]
+    "lib": ["ES2022", "dom"],
+    "baseUrl": "./src",
+    "paths": {
+      "@config/*": ["app/config/*"],
+      "@core/*": ["app/core/*"],
+      "@features/*": ["app/features/*"],
+      "@shared/*": ["app/shared/*"],
+      "@styles/*": ["app/styles/*"],
+      "@app/*": ["app/*"]
+    }
   },
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false,
