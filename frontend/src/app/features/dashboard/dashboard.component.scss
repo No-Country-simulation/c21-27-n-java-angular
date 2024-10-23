@@ -1,0 +1,11 @@
+.user {
+  @apply min-h-40;
+}
+
+.balance {
+  @apply flex flex-col gap-10 justify-center items-center;
+}
+
+.recent-transactions {
+  @apply mt-40;
+}

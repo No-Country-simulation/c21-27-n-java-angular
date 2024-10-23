@@ -12,11 +12,6 @@ import { OB_TEXT_BALANCE, OB_TEXT_HEADINGS } from '@styles/obTexts.tv';
   styleUrl: './account-balance.component.scss',
 })
 export class AccountBalanceComponent {
-  routePaths = PATHS;
-  transferPath = PATHS.FEATURES.TRANSFER.path;
-  transactionsHistoryPath = PATHS.FEATURES.TRANSACTIONS.HISTORY.path;
-
   obBalance = OB_TEXT_BALANCE;
-
   balance = 155804.01;
 }
