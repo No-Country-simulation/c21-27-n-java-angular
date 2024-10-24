@@ -3,12 +3,12 @@ import { Component } from '@angular/core';
 import { OB_TEXT_HEADINGS } from '@styles/obTexts.tv';
 
 @Component({
-  selector: 'app-header',
+  selector: 'app-dashboard-header',
   standalone: true,
   imports: [NgClass],
-  templateUrl: './header.component.html',
-  styleUrl: './header.component.scss',
+  templateUrl: './dashboard-header.component.html',
+  styleUrl: './dashboard-header.component.scss',
 })
-export class HeaderComponent {
+export class DashboardHeaderComponent {
   obHeading = OB_TEXT_HEADINGS;
 }

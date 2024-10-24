@@ -3,6 +3,7 @@
 }
 
 .balance {
+  @apply mt-40;
   @apply flex flex-col gap-10 justify-center items-center;
   @apply lg:items-start;
 }
