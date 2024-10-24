@@ -28,8 +28,8 @@ Oink Bank es una API REST para gestionar usuarios, cuentas bancarias y transacci
 | GET    | `/accounts/{accountNumber}`    | Obtener detalles de una cuenta      | **Path**: `id` (Número de identificación de la cuenta)             |
 | POST   | `/accounts`         | Crear una nueva cuenta bancaria     | **Body**: `{ "userId": 1, "balance": 1000.00 }`                    |           |
 | DELETE | `/accounts/{accountNumber}`    | Eliminar una cuenta bancaria        | **Path**: `id`                                                    |
-| DELETE | `/accounts/balance/{accountNumber}`    | Obtener balance de una cuenta        | **Path**: `id` (Número de identificación de la cuenta)  |                                       
-| DELETE | `/accounts/transactions/{accountNumber}`    | Obtener todas las transacciones de una cuenta        | **Path**: `id` (Número de identificación de la cuenta)              |
+| GET | `/accounts/balance/{accountNumber}`    | Obtener balance de una cuenta        | **Path**: `id` (Número de identificación de la cuenta)  |                                       
+| GET | `/accounts/transactions/{accountNumber}`    | Obtener todas las transacciones de una cuenta        | **Path**: `id` (Número de identificación de la cuenta)              |
 
 ---
 
@@ -43,7 +43,7 @@ Oink Bank es una API REST para gestionar usuarios, cuentas bancarias y transacci
 | GET    | `/transactions/{id}`    | Obtener detalles de una transacción   | **Path**: `id` (Número de identificación de la transacción)           |
 | POST   | `/transactions`         | Crear una nueva transacción           | **Body**: `{ "fromAccountId": 1, "toAccountId": 2, "amount": 100.00 }` |
 | DELETE | `/transactions/{id}`    | Eliminar una transacción              | **Path**: `id`                                                       |
-| DELETE | `/receipt/{operationNumber}/pdf`    | Generar un comprobante PDF              | **Path**: `id` (Número de identificación de la transacción)        |
+| GET | `/receipt/{operationNumber}/pdf`    | Generar un comprobante PDF              | **Path**: `id` (Número de identificación de la transacción)        |
 
 ---
 
