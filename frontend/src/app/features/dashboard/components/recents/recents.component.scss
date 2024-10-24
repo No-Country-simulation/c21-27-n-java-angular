@@ -1,0 +1,7 @@
+:host {
+  @apply block mt-20 bg-zinc-200 rounded-t-3xl pt-8 min-h-80;
+}
+
+.header {
+  @apply flex justify-between items-center;
+}

@@ -1,9 +1,10 @@
-import { Component, inject } from '@angular/core';
+import { Component } from '@angular/core';
+import { BalanceService } from '@shared/services/balance.service';
 
 import { AccountBalanceComponent } from './components/account-balance/account-balance.component';
 import { DashboardHeaderComponent } from './components/dashboard-header/dashboard-header.component';
 import { ShortcutsComponent } from './components/shortcuts/shortcuts.component';
-import { BalanceService } from '@shared/services/balance.service';
+import { RecentsComponent } from './components/recents/recents.component';
 
 @Component({
   selector: 'app-dashboard',
@@ -12,6 +13,7 @@ import { BalanceService } from '@shared/services/balance.service';
     AccountBalanceComponent,
     DashboardHeaderComponent,
     ShortcutsComponent,
+    RecentsComponent,
   ],
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.scss',
@@ -20,7 +22,7 @@ export class DashboardComponent {
   balance = '';
 
   constructor(private balanceService: BalanceService) {
-    const balance = balanceService.getBalance();
+    const balance = this.balanceService.getBalance();
     this.balance = String(balance);
   }
 }
