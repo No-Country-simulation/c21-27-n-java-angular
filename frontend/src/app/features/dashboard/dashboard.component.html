@@ -1,4 +1,9 @@
-<h1 class="{{obTitle({tag: 'h1'})}}">dashboard works!</h1>
-<h2 class="{{obTitle({tag: 'h2'})}}">Transactions</h2>
+<app-dashboard-header />
+<section class="asd">
+  <div class="balance">
+    <app-account-balance [balance]="balance" />
+    <app-shortcuts />
+  </div>
 
-<app-account-balance />
+  <app-recents></app-recents>
+</section>

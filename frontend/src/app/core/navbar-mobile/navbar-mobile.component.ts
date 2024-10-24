@@ -2,13 +2,13 @@ import { Component, ElementRef, AfterViewInit, OnDestroy } from '@angular/core';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 
 @Component({
-  selector: 'app-navbar',
+  selector: 'app-navbar-mobile',
   standalone: true,
   imports: [RouterLink, RouterLinkActive],
-  templateUrl: './navbar.component.html',
-  styleUrls: ['./navbar.component.scss'],
+  templateUrl: './navbar-mobile.component.html',
+  styleUrls: ['./navbar-mobile.component.scss'],
 })
-export class NavbarComponent implements AfterViewInit, OnDestroy {
+export class NavbarMobileComponent implements AfterViewInit, OnDestroy {
   private observer!: IntersectionObserver;
   private readonly maxWidth = 1024;
 
@@ -22,10 +22,14 @@ export class NavbarComponent implements AfterViewInit, OnDestroy {
         this.observer = new IntersectionObserver(
           (entries) => {
             entries.forEach((entry) => {
-              if (entry.isIntersecting) {
-                this.elRef.nativeElement.style.position = 'absolute';
-              } else {
-                this.elRef.nativeElement.style.position = 'fixed';
+              // Encontra o elemento <nav> filho do elemento referenciado
+              const navElement = this.elRef.nativeElement.querySelector('nav');
+              if (navElement) {
+                if (entry.isIntersecting) {
+                  navElement.classList.add('footer-over');
+                } else {
+                  navElement.classList.remove('footer-over');
+                }
               }
             });
           },
