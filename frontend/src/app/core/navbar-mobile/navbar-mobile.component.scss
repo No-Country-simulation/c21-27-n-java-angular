@@ -4,6 +4,8 @@
   left: 50%;
   transform: translateX(-50%);
   z-index: 999;
+
+  @apply lg:hidden;
 }
 
 .nav {
@@ -27,12 +29,6 @@
   }
 }
 
-@media (min-width: 1024px) {
-  :host {
-    position: absolute;
-    left: 0;
-    top: 50%;
-    bottom: auto;
-    transform: translateY(-50%);
-  }
+.footer-over {
+  @apply shadow-ob-secondary-light-green/80;
 }

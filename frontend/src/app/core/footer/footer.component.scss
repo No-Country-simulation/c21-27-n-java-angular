@@ -1,6 +1,6 @@
 .footer {
   // @apply bottom-0 px-5 py-5 lg:px-20 bg-ob-terciary-dark-green min-w-96 mt-80;
-  @apply px-5 py-16 lg:px-20 bg-ob-black mt-24 lg:mt-48;
+  @apply px-5 pt-16 pb-48 lg:px-20 lg:py-16 bg-ob-black mt-24 lg:mt-48;
 
   &__wrapper {
     @apply max-w-7xl mx-auto;
