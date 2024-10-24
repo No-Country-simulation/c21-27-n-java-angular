@@ -4,6 +4,15 @@
 
 .header {
   @apply flex justify-between items-center;
+
+  &__title {
+    &__link {
+      &:hover:after {
+        content: "\2192";
+        @apply text-black text-sm;
+      }
+    }
+  }
 }
 
 .list {
