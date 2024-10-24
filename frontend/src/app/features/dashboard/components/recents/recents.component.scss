@@ -1,7 +1,11 @@
 :host {
-  @apply block mt-20 bg-zinc-200 rounded-t-3xl pt-8 min-h-80;
+  @apply block mt-20 bg-zinc-200 rounded-t-3xl py-8;
 }
 
 .header {
   @apply flex justify-between items-center;
+}
+
+.list {
+  @apply flex flex-col gap-2 mt-5;
 }
