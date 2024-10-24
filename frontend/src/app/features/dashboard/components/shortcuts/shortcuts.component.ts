@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { PATHS } from '@config/paths';
-import { ObButtonCircleComponent } from '@shared/ob-button-circle/ob-button-circle.component';
+import { ObButtonCircleComponent } from '@shared/components/ob-button-circle/ob-button-circle.component';
 import { OB_TEXT_BALANCE } from '@styles/obTexts.tv';
 
 @Component({

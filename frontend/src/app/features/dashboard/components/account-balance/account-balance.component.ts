@@ -1,6 +1,6 @@
 import { CurrencyPipe, NgClass } from '@angular/common';
-import { Component } from '@angular/core';
-import { ObButtonCircleComponent } from '@shared/ob-button-circle/ob-button-circle.component';
+import { Component, Input } from '@angular/core';
+import { ObButtonCircleComponent } from '@shared/components/ob-button-circle/ob-button-circle.component';
 import { OB_TEXT_BALANCE } from '@styles/obTexts.tv';
 
 @Component({
@@ -12,5 +12,5 @@ import { OB_TEXT_BALANCE } from '@styles/obTexts.tv';
 })
 export class AccountBalanceComponent {
   obBalance = OB_TEXT_BALANCE;
-  balance = 155804.01;
+  @Input({ required: true }) balance = '';
 }

@@ -1,3 +1,7 @@
 <p [ngClass]="['balance', obBalance()]">
+  @if (balance.includes('*')) {
+  {{balance}}
+  } @else {
   {{balance | currency}}
+  }
 </p>
