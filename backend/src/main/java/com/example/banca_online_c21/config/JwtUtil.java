@@ -56,6 +56,9 @@ public class JwtUtil {
                 .setSubject(subject)
                 .setIssuedAt(new Date(System.currentTimeMillis()))
                 .setExpiration(new Date(System.currentTimeMillis() + 1000 * 60 * 60 * 10))  // 10 horas
+//                - 1 hora: 1000 * 60 * 60 * 1
+//                - 30 minutos: 1000 * 60 * 30
+//                - 15 minutos: 1000 * 60 * 15
                 .signWith(SignatureAlgorithm.HS256, SECRET_KEY)  // Usa la clave generada
                 .compact();
     }

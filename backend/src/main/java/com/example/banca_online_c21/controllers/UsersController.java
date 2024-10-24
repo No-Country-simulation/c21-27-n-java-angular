@@ -1,10 +1,12 @@
 package com.example.banca_online_c21.controllers;
 
+import com.example.banca_online_c21.config.JwtUtil;
 import com.example.banca_online_c21.entities.Account;
 import com.example.banca_online_c21.entities.Users;
 import com.example.banca_online_c21.repositories.AccountRepository;
 import com.example.banca_online_c21.repositories.UsersRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.validation.ValidationAutoConfiguration;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -28,9 +30,12 @@ public class UsersController {
     @Autowired
     private PasswordEncoder passwordEncoder; // Usaremos este para encriptar contraseñas
 
+    @Autowired
+    private JwtUtil jwtUtil;
 
     @GetMapping
     public List<Users> getAllUsers() {
+
         return userRepository.findAll();
     }
 
@@ -128,7 +133,7 @@ public class UsersController {
 
         return ResponseEntity.ok("Cuenta asignada al usuario con éxito."); // 200 OK
     }
-    // Método para generar un número de cuenta aleatorio
+    // Metodo para generar un número de cuenta aleatorio
     private String generateRandomAccountNumber() {
         String letters = "JAOB";
         Random random = new Random();
@@ -161,10 +166,12 @@ public class UsersController {
 
 
     @PostMapping("/register")
-    public ResponseEntity<Users> registerUser(@RequestBody Users user) {
+    public ResponseEntity<?> registerUser(@RequestBody Users user) {
         // Verificar si el nombre de usuario ya existe
         if (userRepository.findByUsername(user.getUsername()).isPresent()) {
-            return ResponseEntity.status(409).build(); // 409 Conflict
+           // return ResponseEntity.status(409).build(); // 409 Conflict
+            return ResponseEntity.status(409).body("El nombre de usuario ya está en uso.");
+
         }
 
         // Encriptar la contraseña antes de guardar
@@ -183,7 +190,7 @@ public class UsersController {
         // Guardar la cuenta
         accountRepository.save(newAccount);
 
-        return ResponseEntity.ok(savedUser );
+        return ResponseEntity.ok(savedUser);
     }
 
     @PostMapping("/login")
