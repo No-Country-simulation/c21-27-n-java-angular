@@ -1,10 +1,9 @@
 <app-dashboard-header />
+<section class="asd">
+  <div class="balance">
+    <app-account-balance [balance]="balance" />
+    <app-shortcuts />
+  </div>
 
-<section class="balance">
-  <app-account-balance [balance]="balance" />
-  <app-shortcuts />
-</section>
-
-<section class="recent-transactions">
-  transactions component goes here
+  <app-recents></app-recents>
 </section>

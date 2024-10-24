@@ -12,7 +12,7 @@ export const OB_BUTTON_CIRCLE = tv({
 });
 
 export const OB_BUTTON_OUTLINED = tv({
-  base: '',
+  base: 'text-xs tracking-tighter px-4 py-1 bg-transparent rounded-full border border-black/50',
   variants: {
     neutral: '',
     selected: '',

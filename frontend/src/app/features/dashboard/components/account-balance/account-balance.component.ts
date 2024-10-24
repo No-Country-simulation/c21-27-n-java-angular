@@ -13,4 +13,10 @@ import { OB_TEXT_BALANCE } from '@styles/obTexts.tv';
 export class AccountBalanceComponent {
   obBalance = OB_TEXT_BALANCE;
   @Input({ required: true }) balance = '';
+
+  showBalance = true;
+
+  toggleBalanceVisibility() {
+    this.showBalance = !this.showBalance;
+  }
 }
