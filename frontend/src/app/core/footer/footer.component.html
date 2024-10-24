@@ -1,50 +1,38 @@
 <footer class="footer">
-  <div class="footer__logos">
-    <div class="grid h-10 overflow-hidden place-content-center">
-      <img
-        src="SVG/logotipo-text-row-variant-light@OB.svg"
-        alt="Isologo-text-bottom-variant-light"
-        class="w-32 h-auto"
-      />
-    </div>
-    <img
-      src="https://cdn.prod.website-files.com/65773955177041dbf059ed20/6584760759a54bef40894700_Logo%20navbar.svg"
-      alt="No Country Logo"
-      class="w-32 h-auto"
-    />
-  </div>
-  <hr class="footer__line" />
-  <div class="footer__labels">
-    <div class="footer__labels__tw">
-      <span class="font-bold">Team Work</span>
-      <span
-        class="icon-[fluent-mdl2--team-favorite]"
-        role="img"
-        aria-hidden="true"
-      ></span>
-    </div>
-    <div class="footer__labels__flag__container">
-      <div class="footer__labels__flag">
-        <span
-          class="icon-[twemoji--flag-for-flag-argentina]"
-          role="img"
-          aria-hidden="true"
-        ></span>
-        <small>ARG</small>
+  <div class="footer__wrapper">
+    <div class="footer__logos">
+      <div class="grid h-10 overflow-hidden place-content-center">
+        <img src="images/Isologo-text-right@OB.svg" alt="Isologo-text-bottom-variant-light" width="100" />
       </div>
-      <div class="footer__labels__flag">
-        <span
-          class="icon-[twemoji--flag-for-flag-colombia]"
-          role="img"
-          aria-hidden="true"
-        ></span>
-        <small>COL</small>
+
+      <img src="https://cdn.prod.website-files.com/65773955177041dbf059ed20/6584760759a54bef40894700_Logo%20navbar.svg"
+        alt="No Country Logo" width="100" />
+    </div>
+
+    <hr class="footer__line" />
+
+    <div class="footer__labels">
+      <div class="footer__labels__tw">
+        <span class="font-bold">Team Work</span>
+        <span class="icon-[fluent-mdl2--team-favorite]" role="img" aria-hidden="true"></span>
+      </div>
+
+      <div class="footer__labels__flag__container">
+        <div class="footer__labels__flag">
+          <span class="icon-[twemoji--flag-for-flag-argentina]" role="img" aria-hidden="true"></span>
+          <small>ARG</small>
+        </div>
+        <div class="footer__labels__flag">
+          <span class="icon-[twemoji--flag-for-flag-colombia]" role="img" aria-hidden="true"></span>
+          <small>COL</small>
+        </div>
       </div>
     </div>
+
+    <nav class="footer__nav">
+      @for (user of users; track $index) {
+      <app-user-social [data]="user" />
+      }
+    </nav>
   </div>
-  <nav class="footer__nav">
-    @for (user of users; track $index) {
-    <app-user-social [data]="user" />
-    }
-  </nav>
 </footer>
