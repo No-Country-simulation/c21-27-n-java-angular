@@ -1,7 +1,7 @@
 :host {
   @apply flex justify-between items-center h-20;
-  @apply bg-white rounded-3xl;
-  @apply px-6 py-2;
+  @apply bg-white rounded-3xl px-6 py-2;
+  @apply hover:bg-white/60 cursor-pointer;
 }
 
 .destination {

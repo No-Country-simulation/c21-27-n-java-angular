@@ -1,8 +1,9 @@
 <app-dashboard-header />
+<section class="asd">
+  <div class="balance">
+    <app-account-balance [balance]="balance" />
+    <app-shortcuts />
+  </div>
 
-<section class="balance">
-  <app-account-balance [balance]="balance" />
-  <app-shortcuts />
+  <app-recents></app-recents>
 </section>
-
-<app-recents></app-recents>
