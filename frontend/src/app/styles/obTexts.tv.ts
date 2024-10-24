@@ -22,7 +22,7 @@ export const OB_TEXT_PARAGRAPHS = tv({
 });
 
 export const OB_TEXT_BALANCE = tv({
-  base: 'text-[12vw] lg:text-7xl w-full overflow-hidden text-ellipsis',
+  base: 'text-[12vw] lg:text-7xl lg:font-bold  w-full overflow-hidden text-ellipsis',
 });
 
 export type ObHeadingTypes = VariantProps<typeof OB_TEXT_HEADINGS>;

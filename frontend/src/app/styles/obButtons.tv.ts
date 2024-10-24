@@ -1,7 +1,7 @@
 import { tv, VariantProps } from 'tailwind-variants';
 
 export const OB_BUTTON_CIRCLE = tv({
-  base: 'h-12 w-12 rounded-full bg-gray-500 flex justify-center items-center text-3xl',
+  base: 'h-12 w-12 lg:h-16 lg:w-16 rounded-full bg-gray-500 flex justify-center items-center text-3xl',
   variants: {
     color: {
       primary:
