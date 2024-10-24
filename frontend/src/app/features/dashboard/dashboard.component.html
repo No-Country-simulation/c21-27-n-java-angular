@@ -1,4 +1,10 @@
-<h1 class="{{obTitle({tag: 'h1'})}}">dashboard works!</h1>
-<h2 class="{{obTitle({tag: 'h2'})}}">Transactions</h2>
+<app-dashboard-header />
 
-<app-account-balance />
+<section class="balance">
+  <app-account-balance [balance]="balance" />
+  <app-shortcuts />
+</section>
+
+<section class="recent-transactions">
+  transactions component goes here
+</section>

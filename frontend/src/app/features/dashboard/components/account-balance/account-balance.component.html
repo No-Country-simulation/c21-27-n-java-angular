@@ -1,3 +1,7 @@
-<p>account-balance works!</p>
-<p>Balance example</p>
-<p [class]="obBalance()">$155804.1</p>
+<p [ngClass]="['balance', obBalance()]">
+  @if (balance.includes('*')) {
+  {{balance}}
+  } @else {
+  {{balance | currency}}
+  }
+</p>

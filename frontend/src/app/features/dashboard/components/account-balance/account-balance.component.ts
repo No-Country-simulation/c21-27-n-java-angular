@@ -1,13 +1,16 @@
-import { Component } from '@angular/core';
-import { OB_BALANCE } from '../../../../styles/balance.tv';
+import { CurrencyPipe, NgClass } from '@angular/common';
+import { Component, Input } from '@angular/core';
+import { ObButtonCircleComponent } from '@shared/components/ob-button-circle/ob-button-circle.component';
+import { OB_TEXT_BALANCE } from '@styles/obTexts.tv';
 
 @Component({
   selector: 'app-account-balance',
   standalone: true,
-  imports: [],
+  imports: [CurrencyPipe, ObButtonCircleComponent, NgClass],
   templateUrl: './account-balance.component.html',
   styleUrl: './account-balance.component.scss',
 })
 export class AccountBalanceComponent {
-  obBalance = OB_BALANCE;
+  obBalance = OB_TEXT_BALANCE;
+  @Input({ required: true }) balance = '';
 }
