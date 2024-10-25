@@ -1,6 +1,9 @@
 package com.example.banca_online_c21.services;
 
+import com.example.banca_online_c21.DTO.TransferRequest;
+import com.example.banca_online_c21.entities.Account;
 import com.example.banca_online_c21.entities.TransactionEntity;
+import com.example.banca_online_c21.repositories.AccountRepository;
 import com.example.banca_online_c21.repositories.TransactionRepository;
 import com.lowagie.text.*;
 import com.lowagie.text.pdf.PdfWriter;
@@ -8,9 +11,12 @@ import jakarta.servlet.http.HttpServletResponse;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
+import javax.security.auth.login.AccountNotFoundException;
 import java.io.IOException;
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.UUID;
 
@@ -22,6 +28,8 @@ public class TransactionService implements ITransactionService {
 
     private final TransactionRepository repository;
 
+    private final AccountRepository accountRepository;
+
     @Override
     public List<TransactionEntity> getAll() {
         return repository.findAll();
@@ -32,6 +40,8 @@ public class TransactionService implements ITransactionService {
         var fromDB = repository.findById(id).orElseThrow();
         return fromDB;
     }
+
+
 
 
     @Override
@@ -86,5 +96,42 @@ public class TransactionService implements ITransactionService {
         document.add(p7);
 
         document.close();
+    }
+
+
+    @Override
+    public void transferFunds(TransferRequest transferRequest) throws AccountNotFoundException {
+        // Validar que la cuenta de origen exista
+        Account sourceAccount = accountRepository.findByAccountNumber(transferRequest.getSourceAccount())
+                .orElseThrow(() -> new AccountNotFoundException("Cuenta de origen no encontrada."));
+
+        // Validar que la cuenta de destino exista
+        Account destinationAccount = accountRepository.findByAccountNumber(transferRequest.getDestinationAccount())
+                .orElseThrow(() -> new AccountNotFoundException("Cuenta destino no encontrada."));
+
+        // Validar que la cuenta de origen tenga suficientes fondos
+        if (sourceAccount.getBalance() < transferRequest.getAmount()) {
+            throw new RuntimeException("Fondos insuficientes en la cuenta de origen.");
+        }
+
+        // Procesar la transferencia
+        sourceAccount.setBalance(sourceAccount.getBalance() - transferRequest.getAmount());
+        destinationAccount.setBalance(destinationAccount.getBalance() + transferRequest.getAmount());
+
+        // Guardar las cuentas actualizadas
+        accountRepository.save(sourceAccount);
+        accountRepository.save(destinationAccount);
+
+        // Registrar la transacción
+        TransactionEntity transaction = TransactionEntity.builder()
+                .sourceAccount(sourceAccount)
+                .destinationAccount(destinationAccount)
+                .amount(transferRequest.getAmount())
+                .description(transferRequest.getDescription())
+                //.operationNumber(UUID.randomUUID())
+                //.date(LocalDateTime.now())
+                .build();
+
+        repository.save(transaction);
     }
 }

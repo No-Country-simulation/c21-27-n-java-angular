@@ -25,9 +25,11 @@ public class SecurityConfig {
         return http
                 .csrf(csrf -> csrf.disable())
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/api/auth/login").permitAll()  // Permitir login sin autenticación
-                        .requestMatchers("/api/users/register").permitAll()  // Permitir registro sin autenticación
-                        .anyRequest().authenticated()  // Proteger los demás endpoints
+//                        .requestMatchers("/api/auth/login").permitAll()  // Permitir login sin autenticación
+//                        .requestMatchers("/api/users/register").permitAll()  // Permitir registro sin autenticación
+//                        .requestMatchers("/api/transactions/transfer").permitAll()
+//                        .anyRequest().authenticated()  // Proteger los demás endpoints
+                                .anyRequest().permitAll()
                 )
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))  // No crear sesión
                 .addFilterBefore(jwtRequestFilter, UsernamePasswordAuthenticationFilter.class)  // Agregar el filtro JWT
