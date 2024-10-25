@@ -7,11 +7,11 @@ export const PATHS = {
     ACCOUNT: {},
     TRANSACTIONS: {
       HISTORY: {
-        path: 'transaction/history',
+        path: 'transactions/history',
         title: 'Historial de Transacciones | OinkBank',
       },
       RECEIPT: {
-        path: 'transaction/receipt/:receiptId',
+        path: 'transactions/receipt/:receiptId',
         title: 'Comprobante | OinkBank',
       },
     },

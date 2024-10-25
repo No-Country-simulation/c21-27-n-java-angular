@@ -1,0 +1,17 @@
+<div [ngClass]="[obPadding()]">
+  <header class="header">
+    <h2 [ngClass]="[obHeading({tag: 'h2'}), 'header__title']">
+      <a [href]="paths.FEATURES.TRANSACTIONS.HISTORY.path" class="header__title__link">
+        Últimas Transacciones
+      </a>
+    </h2>
+
+    <select name="month" id="month" [ngClass]="['header__select', obButtonOutline()]">
+      <option value="test">Octubre</option>
+    </select>
+  </header>
+
+  <section class="list">
+    <app-transfer-card destination="Test" amount="250" time="5:00"></app-transfer-card>
+  </section>
+</div>

@@ -1,0 +1,20 @@
+:host {
+  @apply block mt-20 lg:mt-0 bg-zinc-200 rounded-t-3xl lg:rounded-3xl py-8 px-4;
+}
+
+.header {
+  @apply flex justify-between items-center;
+
+  &__title {
+    &__link {
+      &:hover:after {
+        content: "\2192";
+        @apply text-black text-sm;
+      }
+    }
+  }
+}
+
+.list {
+  @apply flex flex-col gap-2 mt-5;
+}
