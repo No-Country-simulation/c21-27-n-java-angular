@@ -1,6 +1,6 @@
 import { tv, VariantProps } from 'tailwind-variants';
 
-export const OB_BUTTON_CIRCLE = tv({
+export const obBtnCircle = tv({
   base: 'h-14 w-14 lg:h-16 lg:w-16 rounded-full bg-gray-500 flex justify-center items-center text-3xl',
   variants: {
     color: {
@@ -11,7 +11,7 @@ export const OB_BUTTON_CIRCLE = tv({
   },
 });
 
-export const OB_BUTTON_OUTLINED = tv({
+export const obBtnOutlined = tv({
   base: 'text-xs tracking-tighter px-4 py-1 bg-transparent rounded-full border border-black/50',
   variants: {
     neutral: '',
@@ -19,7 +19,7 @@ export const OB_BUTTON_OUTLINED = tv({
   },
 });
 
-export const OB_BUTTON_GHOST = tv({
+export const obBtnGhost = tv({
   base: '',
   variants: {
     neutral: '',
@@ -27,6 +27,6 @@ export const OB_BUTTON_GHOST = tv({
   },
 });
 
-export type ObButtonCircleTypes = VariantProps<typeof OB_BUTTON_CIRCLE>;
-export type ObButtonOutlinedTypes = VariantProps<typeof OB_BUTTON_OUTLINED>;
-export type ObButtonGhostTypes = VariantProps<typeof OB_BUTTON_GHOST>;
+export type ObButtonCircleTypes = VariantProps<typeof obBtnCircle>;
+export type ObButtonOutlinedTypes = VariantProps<typeof obBtnOutlined>;
+export type ObButtonGhostTypes = VariantProps<typeof obBtnGhost>;

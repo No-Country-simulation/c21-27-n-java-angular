@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, Input } from '@angular/core';
 import { RouterLink } from '@angular/router';
-import { OB_BUTTON_CIRCLE, ObButtonCircleTypes } from '@styles/obButtons.tv';
+import { obBtnCircle, ObButtonCircleTypes } from '@styles/ob-button.tv';
 
 @Component({
   selector: 'app-ob-button-circle',
@@ -11,7 +11,7 @@ import { OB_BUTTON_CIRCLE, ObButtonCircleTypes } from '@styles/obButtons.tv';
   styleUrl: './ob-button-circle.component.scss',
 })
 export class ObButtonCircleComponent {
-  obButton = OB_BUTTON_CIRCLE;
+  obButton = obBtnCircle;
 
   @Input() label = '';
   @Input() color: ObButtonCircleTypes['color'] = 'primary';
