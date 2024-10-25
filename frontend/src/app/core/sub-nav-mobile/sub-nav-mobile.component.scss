@@ -1,0 +1,15 @@
+:host {
+  @apply flex justify-between items-center my-10;
+}
+
+a {
+  @apply text-ob-black text-2xl;
+}
+
+h1 {
+  @apply font-bold text-sm;
+}
+
+button {
+  visibility: hidden;
+}
