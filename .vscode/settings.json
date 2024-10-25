@@ -1,4 +1,4 @@
 {
   "conventionalCommits.scopes": ["fe"],
-  "editor.cursorStyle": "block"
+  "editor.cursorStyle": "line"
 }
