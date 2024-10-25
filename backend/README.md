@@ -10,11 +10,11 @@ Oink Bank es una API REST para gestionar usuarios, cuentas bancarias y transacci
 
 | Método | Endpoint        | Descripción                         | Parámetros                                               |
 |--------|-----------------|-------------------------------------|----------------------------------------------------------|
-| GET    | `/users`         | Obtener todos los usuarios          | -                                                        |
-| GET    | `/users/{id}`    | Obtener un usuario por ID           | **Path**: `id` (Número de identificación del usuario)     |
-| POST   | `/users`         | Crear un nuevo usuario              | **Body**: `{ "username": "John", "password": "1234" }`  |
-| PUT    | `/users/{id}`    | Actualizar un usuario existente     | **Path**: `id` <br> **Body**: `{ "username": "Brad", "password": "123" }`        |
-| DELETE | `/users/{id}`    | Eliminar un usuario                 | **Path**: `id`                                           |
+| GET    | `https://oinkbank.onrender.com/api/users`         | Obtener todos los usuarios          | -                                                        |
+| GET    | `https://oinkbank.onrender.com/api/users/{id}`    | Obtener un usuario por ID           | **Path**: `id` (Número de identificación del usuario)     |
+| POST   | `https://oinkbank.onrender.com/api/users/register`         | Crear un nuevo usuario              | **Body**: `{ "username": "John", "password": "1234" }`  |
+| POST   | `https://oinkbank.onrender.com/api/auth/login`         | Crear un nuevo usuario              | **Body**: `{ "username": "John", "password": "1234" }`  |
+| DELETE | `https://oinkbank.onrender.com/api/users/{id}`    | Eliminar un usuario                 | **Path**: `id`                                           |
 
 ---
 
@@ -24,12 +24,12 @@ Oink Bank es una API REST para gestionar usuarios, cuentas bancarias y transacci
 
 | Método | Endpoint           | Descripción                         | Parámetros                                                        |
 |--------|--------------------|-------------------------------------|-------------------------------------------------------------------|
-| GET    | `/accounts`         | Obtener todas las cuentas bancarias | -                                                                 |
-| GET    | `/accounts/{accountNumber}`    | Obtener detalles de una cuenta      | **Path**: `id` (Número de identificación de la cuenta)             |
-| POST   | `/accounts`         | Crear una nueva cuenta bancaria     | **Body**: `{ "userId": 1, "balance": 1000.00 }`                    |           |
-| DELETE | `/accounts/{accountNumber}`    | Eliminar una cuenta bancaria        | **Path**: `id`                                                    |
-| GET | `/accounts/balance/{accountNumber}`    | Obtener balance de una cuenta        | **Path**: `id` (Número de identificación de la cuenta)  |                                       
-| GET | `/accounts/transactions/{accountNumber}`    | Obtener todas las transacciones de una cuenta        | **Path**: `id` (Número de identificación de la cuenta)              |
+| GET    | `https://oinkbank.onrender.com/api/accounts`         | Obtener todas las cuentas bancarias | -                                                                 |
+| GET    | `https://oinkbank.onrender.com/api/accounts/{accountNumber}`    | Obtener detalles de una cuenta      | **Path**: `id` (Número de identificación de la cuenta)             |
+| POST   | `https://oinkbank.onrender.com/api/accounts`         | Crear una nueva cuenta bancaria     | **Body**: `{ "userId": 1, "balance": 1000.00 }`                    |           |
+| DELETE | `https://oinkbank.onrender.com/api/accounts/{accountNumber}`    | Eliminar una cuenta bancaria        | **Path**: `id`                                                    |
+| GET | `https://oinkbank.onrender.com/api/accounts/balance/{accountNumber}`    | Obtener balance de una cuenta        | **Path**: `id` (Número de identificación de la cuenta)  |                                       
+| GET | `https://oinkbank.onrender.com/api/accounts/transactions/{accountNumber}`    | Obtener todas las transacciones de una cuenta        | **Path**: `id` (Número de identificación de la cuenta)              |
 
 ---
 
@@ -39,11 +39,11 @@ Oink Bank es una API REST para gestionar usuarios, cuentas bancarias y transacci
 
 | Método | Endpoint               | Descripción                           | Parámetros                                                           |
 |--------|------------------------|---------------------------------------|----------------------------------------------------------------------|
-| GET    | `/transactions`         | Obtener todas las transacciones       | -                                                                    |
-| GET    | `/transactions/{id}`    | Obtener detalles de una transacción   | **Path**: `id` (Número de identificación de la transacción)           |
-| POST   | `/transactions`         | Crear una nueva transacción           | **Body**: `{ "fromAccountId": 1, "toAccountId": 2, "amount": 100.00 }` |
-| DELETE | `/transactions/{id}`    | Eliminar una transacción              | **Path**: `id`                                                       |
-| GET | `/receipt/{operationNumber}/pdf`    | Generar un comprobante PDF              | **Path**: `id` (Número de identificación de la transacción)        |
+| GET    | `https://oinkbank.onrender.com/api/transactions`         | Obtener todas las transacciones       | -                                                                    |
+| GET    | `https://oinkbank.onrender.com/api/transactions/{id}`    | Obtener detalles de una transacción   | **Path**: `id` (Número de identificación de la transacción)           |
+| POST   | `https://oinkbank.onrender.com/api/transactions`         | Crear una nueva transacción           | **Body**: `{ "fromAccountId": 1, "toAccountId": 2, "amount": 100.00 }` |
+| DELETE | `https://oinkbank.onrender.com/api/transactions/{id}`    | Eliminar una transacción              | **Path**: `id`                                                       |
+| GET | `https://oinkbank.onrender.com/api/receipt/{operationNumber}/pdf`    | Generar un comprobante PDF              | **Path**: `id` (Número de identificación de la transacción)        |
 
 ---
 
