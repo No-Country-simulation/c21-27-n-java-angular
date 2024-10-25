@@ -1,12 +1,10 @@
-<app-header />
+<app-user-sesion name="Goku" />
 
-<section class="dashboard">
-  <div class="balance">
+<section [ngClass]="['dashboard']">
+  <div [ngClass]="['balance', obPadding()]">
     <app-account-balance [balance]="balance" />
     <app-shortcuts />
   </div>
-
-  <hr />
 
   <app-recents></app-recents>
 </section>
