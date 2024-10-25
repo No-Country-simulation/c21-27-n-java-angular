@@ -1,10 +1,7 @@
-import { Component, Input } from '@angular/core';
-import {
-  OB_BUTTON_CIRCLE,
-  ObButtonCircleTypes,
-} from '../../styles/obButtons.tv';
 import { CommonModule } from '@angular/common';
+import { Component, Input } from '@angular/core';
 import { RouterLink } from '@angular/router';
+import { OB_BUTTON_CIRCLE, ObButtonCircleTypes } from '@styles/obButtons.tv';
 
 @Component({
   selector: 'app-ob-button-circle',
