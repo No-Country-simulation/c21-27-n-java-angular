@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { BalanceService } from '@shared/services/balance.service';
 
 import { AccountBalanceComponent } from './components/account-balance/account-balance.component';
-import { DashboardHeaderComponent } from './components/dashboard-header/dashboard-header.component';
+import { HeaderComponent } from './components/header/header.component';
 import { ShortcutsComponent } from './components/shortcuts/shortcuts.component';
 import { RecentsComponent } from './components/recents/recents.component';
 
@@ -11,7 +11,7 @@ import { RecentsComponent } from './components/recents/recents.component';
   standalone: true,
   imports: [
     AccountBalanceComponent,
-    DashboardHeaderComponent,
+    HeaderComponent,
     ShortcutsComponent,
     RecentsComponent,
   ],

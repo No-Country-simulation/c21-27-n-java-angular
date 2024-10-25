@@ -36,7 +36,7 @@ input[type="number"] {
 
     input,
     &__number {
-      @apply text-5xl text-center border-none h-28;
+      @apply text-5xl text-center border-none h-28 bg-transparent;
     }
   }
 
@@ -59,4 +59,8 @@ input[type="number"] {
   &__submit {
     @apply w-full text-white font-bold bg-ob-main-bright-green h-20 rounded-full border-4 border-ob-secondary-light-green hover:bg-ob-main-bright-green/90;
   }
+}
+
+.powered {
+  @apply flex gap-1 justify-center items-center mt-4 text-xs font-bold;
 }
