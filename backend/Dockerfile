@@ -1,4 +1,4 @@
-FROM amazoncorreto:21-alpine-jdk
+FROM amazoncorretto:21-alpine-jdk
 
 COPY target\banca-online-c21-0.0.1-SNAPSHOT.jar app.jar
 
