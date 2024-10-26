@@ -2,7 +2,6 @@ package com.example.banca_online_c21.controllers;
 
 import com.example.banca_online_c21.DTO.BalanceUpdateRequest;
 import com.example.banca_online_c21.entities.Account;
-import com.example.banca_online_c21.entities.TransactionEntity;
 import com.example.banca_online_c21.repositories.AccountRepository;
 import com.example.banca_online_c21.services.AccountService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -47,7 +46,7 @@ public class AccountController {
                 .orElse(ResponseEntity.notFound().build());
     }
 
-    //    // Método para eliminar una cuenta
+    //    // Metodo para eliminar una cuenta
     @DeleteMapping("/{accountNumber}")
     public ResponseEntity<String> deleteAccount(@PathVariable String accountNumber) {
         try {

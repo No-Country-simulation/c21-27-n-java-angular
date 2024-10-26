@@ -11,12 +11,9 @@ import jakarta.servlet.http.HttpServletResponse;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
-
 import javax.security.auth.login.AccountNotFoundException;
 import java.io.IOException;
-import java.time.LocalDateTime;
 import java.util.List;
 import java.util.UUID;
 
@@ -30,6 +27,14 @@ public class TransactionService implements ITransactionService {
 
     private final AccountRepository accountRepository;
 
+    private static final String ACCOUNT_NUMBER_PATTERN = "^[JAOB][0-9]{4}[JAOB][0-9]{4}[JAOB][0-9]{4}[JAOB]$";
+
+
+    @Override
+    public List<TransactionEntity> findByAccountNumber(String accountNumber) {
+        return repository.findBySourceAccount_AccountNumber(accountNumber);
+    }
+
     @Override
     public List<TransactionEntity> getAll() {
         return repository.findAll();
@@ -40,8 +45,6 @@ public class TransactionService implements ITransactionService {
         var fromDB = repository.findById(id).orElseThrow();
         return fromDB;
     }
-
-
 
 
     @Override
@@ -98,9 +101,24 @@ public class TransactionService implements ITransactionService {
         document.close();
     }
 
-
+    @Transactional
     @Override
     public void transferFunds(TransferRequest transferRequest) throws AccountNotFoundException {
+
+        // Validar formato del número de cuenta de origen
+        if (!transferRequest.getSourceAccount().matches(ACCOUNT_NUMBER_PATTERN)) {
+            throw new IllegalArgumentException("El número de cuenta de origen tiene un formato incorrecto.");
+        }
+
+        // Validar formato del número de cuenta de destino
+        if (!transferRequest.getDestinationAccount().matches(ACCOUNT_NUMBER_PATTERN)) {
+            throw new IllegalArgumentException("El número de cuenta de destino tiene un formato incorrecto.");
+        }
+
+        // Verificar que el monto sea positivo
+        if (transferRequest.getAmount() == null || transferRequest.getAmount() <= 0) {
+            throw new IllegalArgumentException("El monto debe ser mayor a 0.");
+        }
         // Validar que la cuenta de origen exista
         Account sourceAccount = accountRepository.findByAccountNumber(transferRequest.getSourceAccount())
                 .orElseThrow(() -> new AccountNotFoundException("Cuenta de origen no encontrada."));

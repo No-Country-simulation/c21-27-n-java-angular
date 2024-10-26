@@ -15,7 +15,7 @@ public class Users {
 
 //    @Id
 //    @GeneratedValue(strategy = GenerationType.IDENTITY)
-//    private Integer id;
+//    private Long id;
 //
 //    @Column(nullable = false, unique = true)
 //    private String username;
@@ -24,7 +24,7 @@ public class Users {
 //    private String password;
 //
 //    @OneToOne(mappedBy = "user")
-//    @JsonManagedReference
+//    //@JsonManagedReference
 //    private Account accounts;
 //
 //    // Relación OneToMany con Account

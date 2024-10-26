@@ -27,14 +27,15 @@ public class TransactionEntity implements Serializable {
     private Account sourceAccount;
 
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "destination_account", referencedColumnName = "account_number") // Cambia esto según sea necesario
+    @JoinColumn(name = "destination_account", referencedColumnName = "account_number")
+    // Cambia esto según sea necesario
     private Account destinationAccount;
 
     private Double amount;
     private String description;
     private LocalDateTime date;
 
-//    @PrePersist
+    //    @PrePersist
 //    protected void onCreate() {
 //        this.date = LocalDateTime.now(); // Se inicializa la fecha de la transacción al momento de persistir
 //    }
