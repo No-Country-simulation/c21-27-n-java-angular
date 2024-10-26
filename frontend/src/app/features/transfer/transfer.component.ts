@@ -28,7 +28,7 @@ import { TransferConfirmComponent } from './components/transfer-confirm/transfer
 })
 export class TransferComponent {
   transferForm: FormGroup;
-  showModal = signal(false);
+  showModal = signal(true);
 
   constructor(private formBuilder: FormBuilder) {
     this.transferForm = this.formBuilder.group({
