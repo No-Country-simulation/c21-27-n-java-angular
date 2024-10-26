@@ -7,7 +7,7 @@ h1 {
 }
 
 label {
-  @apply text-sm text-left text-ob-black/70;
+  @apply text-sm text-left text-ob-black;
 }
 
 input {
@@ -23,6 +23,7 @@ input[type="number"]::-webkit-outer-spin-button {
   margin: 0;
 }
 input[type="number"] {
+  appearance: textfield;
   -moz-appearance: textfield;
 }
 
@@ -38,6 +39,13 @@ input[type="number"] {
       @apply text-4xl bg-transparent w-full border-none mt-4;
       text-align: center !important;
     }
+
+    .error-container {
+      @apply h-1;
+    }
+    &__error-message {
+      @apply text-xs text-ob-danger-red;
+    }
   }
 
   &__details {
@@ -46,8 +54,15 @@ input[type="number"] {
     &__field {
       @apply text-left;
 
-      label {
+      &__label {
         @apply text-ob-terciary-dark-green;
+      }
+
+      .error-container {
+        @apply h-1;
+      }
+      &__error-message {
+        @apply text-xs text-ob-danger-red pl-2 pt-1;
       }
 
       input {
@@ -58,6 +73,9 @@ input[type="number"] {
 
   &__submit {
     @apply w-full text-white font-bold bg-ob-main-bright-green h-20 rounded-full border-4 border-ob-secondary-light-green hover:bg-ob-main-bright-green/90;
+  }
+  &__submit:disabled {
+    @apply bg-ob-main-bright-green/80 border-zinc-300;
   }
 }
 

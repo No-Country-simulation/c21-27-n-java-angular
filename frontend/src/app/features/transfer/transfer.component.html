@@ -1,15 +1,12 @@
-<app-sub-nav-mobile page="Transferir dinero" />
+<app-sub-nav-mobile page="Transferir dinero"></app-sub-nav-mobile>
 
-<form class="transfer" [formGroup]="transferForm" method="" action="">
-  <!-- Monto de la transferencia -->
+<form class="transfer" [formGroup]="transferForm" (ngSubmit)="onSubmit()">
+  <!-- Campo de Monto -->
   <fieldset class="transfer__amount">
-    <label
-      for="transfer-amount"
-      class="visually-hidden transfer__amount__label"
-    >
+    <label for="transfer-amount" class="transfer__amount__label">
       Monto a transferir
     </label>
-    <!-- TODO Validar max $ 999.999.999 -->
+
     <input
       class="transfer__amount__input"
       type="tel"
@@ -17,46 +14,84 @@
       name="amount"
       placeholder="0.00"
       aria-label="Monto a transferir"
-      required
       currencyMask
       [currencyMask]="{ prefix: '$ ', thousands: '.', decimal: ',' }"
       formControlName="amount"
       (focus)="moveCursorToEnd($event)"
     />
+
+    <div class="error-container">
+      <p
+        class="transfer__amount__error-message"
+        *ngIf="amountCtl?.invalid && (amountCtl?.touched || amountCtl?.dirty)"
+      >
+        {{ getErrorMessage("amount") }}
+      </p>
+    </div>
   </fieldset>
 
+  <!-- Campo de Cuenta destino -->
   <fieldset class="transfer__details">
     <div class="transfer__details__field">
-      <label for="transfer-destino">
-        <span class="icon-[heroicons--user-solid]"></span>
-        Cuenta destino
+      <label for="transfer-destino" class="transfer__details__field__label">
+        <span class="icon-[heroicons--user-solid]"></span> Cuenta destino
       </label>
+
       <input
         type="text"
         name="destino"
         id="transfer-destino"
-        placeholder=""
-        required
         aria-label="Cuenta destino"
+        formControlName="destination"
       />
+
+      <div class="error-container">
+        <p
+          class="transfer__details__field__error-message"
+          *ngIf="
+            destinationCtl?.invalid &&
+            (destinationCtl?.touched || destinationCtl?.dirty)
+          "
+        >
+          {{ getErrorMessage("destination") }}
+        </p>
+      </div>
     </div>
 
+    <!-- Campo de Descripción -->
     <div class="transfer__details__field">
-      <label for="transfer-descripcion">
-        <span class="icon-[heroicons--document-text-solid]"></span>
-        Descripción
+      <label
+        for="transfer-descripcion"
+        class="transfer__details__field__labels__label"
+      >
+        <span class="icon-[heroicons--document-text-solid]"></span> Descripción
       </label>
       <input
         type="text"
         name="descripcion"
         id="transfer-descripcion"
-        placeholder=""
         aria-label="Descripción"
+        formControlName="description"
       />
+      <div class="error-container">
+        <p
+          class="transfer__details__field__error-message"
+          *ngIf="
+            descriptionCtl?.invalid &&
+            (descriptionCtl?.touched || descriptionCtl?.dirty)
+          "
+        >
+          {{ getErrorMessage("description") }}
+        </p>
+      </div>
     </div>
   </fieldset>
 
-  <button type="submit" class="transfer__submit">
+  <button
+    type="submit"
+    class="transfer__submit"
+    [disabled]="!transferForm.valid"
+  >
     Transferir
     <span class="icon-[heroicons--banknotes-solid]" aria-hidden="true"></span>
   </button>
