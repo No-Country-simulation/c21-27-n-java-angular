@@ -1,10 +1,13 @@
 package com.example.banca_online_c21.controllers;
 
-import com.example.banca_online_c21.DTO.BalanceUpdateRequest;
+import com.example.banca_online_c21.dtos.requests.BalanceUpdateRequest;
+import com.example.banca_online_c21.dtos.responses.AccountResponse;
+import com.example.banca_online_c21.dtos.responses.TransactionResponse;
 import com.example.banca_online_c21.entities.Account;
 import com.example.banca_online_c21.entities.TransactionEntity;
 import com.example.banca_online_c21.repositories.AccountRepository;
 import com.example.banca_online_c21.services.AccountService;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -26,8 +29,8 @@ public class AccountController {
     private AccountService accountService;
 
     @GetMapping
-    public List<Account> getAllAccounts() {
-        return accountRepository.findAll();
+    public List<AccountResponse> getAllAccounts() {
+        return accountRepository.findAll().stream().map(this::entityToResponse).toList();
     }
 
     @PostMapping
@@ -36,14 +39,14 @@ public class AccountController {
     }
 
     @GetMapping("/user/{userId}")
-    public List<Account> getAccountsByUserId(@PathVariable Integer userId) {
-        return accountRepository.findByUserId(userId);
+    public List<AccountResponse> getAccountsByUserId(@PathVariable Integer userId) {
+        return accountRepository.findByUserId(userId).stream().map(this::entityToResponse).toList();
     }
 
     @GetMapping("/{accountNumber}")
-    public ResponseEntity<Account> getAccountById(@PathVariable String accountNumber) {
+    public ResponseEntity<AccountResponse> getAccountById(@PathVariable String accountNumber) {
         return accountRepository.findById(accountNumber)
-                .map(account -> ResponseEntity.ok().body(account))
+                .map(account -> ResponseEntity.ok().body(this.entityToResponse(account)))
                 .orElse(ResponseEntity.notFound().build());
     }
 
@@ -66,13 +69,11 @@ public class AccountController {
         return ResponseEntity.ok(balance);
     }
 
-//    @GetMapping("transactions/{accountNumber}")
-//    public ResponseEntity<Map<String, List<TransactionEntity>>> getTransactions(@PathVariable String accountNumber) {
-//        Map<String, List<TransactionEntity>> transactions = new HashMap<>();
-//        var account = this.accountRepository.findByAccountNumber(accountNumber).orElseThrow();
-//        transactions.put("transactions", account.getTransactions());
-//        return ResponseEntity.ok(transactions);
-//    }
+    @GetMapping("transactions/{accountNumber}")
+    public ResponseEntity<List<TransactionResponse>> getTransactions(@PathVariable String accountNumber) {
+        var account = this.accountRepository.findByAccountNumber(accountNumber).orElseThrow();
+        return ResponseEntity.ok(account.getTransactions().stream().map(this::entityToRes).toList());
+    }
 
     @PostMapping("/balance")
     public ResponseEntity<String> addBalance(@RequestBody BalanceUpdateRequest balanceUpdateRequest) {
@@ -97,5 +98,20 @@ public class AccountController {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error al actualizar el balance.");
         }
     }
+
+    private AccountResponse entityToResponse(Account entity) {
+        var response = new AccountResponse();
+        BeanUtils.copyProperties(entity, response);
+        return response;
+    }
+
+    private TransactionResponse entityToRes(TransactionEntity entity) {
+        var response = new TransactionResponse();
+        BeanUtils.copyProperties(entity, response);
+        response.setSourceAccount(entity.getSourceAccount().getAccountNumber());
+        response.setDestinationAccount(entity.getDestinationAccount().getAccountNumber());
+        return response;
+    }
+
 
 }

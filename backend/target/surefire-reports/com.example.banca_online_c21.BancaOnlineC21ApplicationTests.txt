@@ -1,4 +1,0 @@
--------------------------------------------------------------------------------
-Test set: com.example.banca_online_c21.BancaOnlineC21ApplicationTests
--------------------------------------------------------------------------------
-Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 16.57 s -- in com.example.banca_online_c21.BancaOnlineC21ApplicationTests

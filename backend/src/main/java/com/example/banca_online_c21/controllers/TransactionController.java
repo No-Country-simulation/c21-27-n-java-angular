@@ -1,10 +1,12 @@
 package com.example.banca_online_c21.controllers;
 
-import com.example.banca_online_c21.DTO.TransferRequest;
+import com.example.banca_online_c21.dtos.requests.TransferRequest;
+import com.example.banca_online_c21.dtos.responses.TransactionResponse;
 import com.example.banca_online_c21.entities.TransactionEntity;
 import com.example.banca_online_c21.services.ITransactionService;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.BeanUtils;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -39,12 +41,12 @@ public class TransactionController {
     }
 
 
-
     @GetMapping("receipt/{operationNumber}/pdf")
     void generatePdf(@PathVariable UUID operationNumber, HttpServletResponse response) throws IOException {
         response.setContentType("application/pdf");
         this.transactionService.generatePdf(operationNumber, response);
     }
+
     // Endpoint para realizar una transferencia entre cuentas
     @PostMapping("/transfer")
     public ResponseEntity<String> transferFunds(@RequestBody TransferRequest transferRequest) {
@@ -62,6 +64,14 @@ public class TransactionController {
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error en la transferencia.");
         }
+    }
+
+    private TransactionResponse entityToResponse(TransactionEntity entity) {
+        var response = new TransactionResponse();
+        BeanUtils.copyProperties(entity, response);
+        response.setSourceAccount(entity.getSourceAccount().getAccountNumber());
+        response.setDestinationAccount(entity.getDestinationAccount().getAccountNumber());
+        return response;
     }
 
 
