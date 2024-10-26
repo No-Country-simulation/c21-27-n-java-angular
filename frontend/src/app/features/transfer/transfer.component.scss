@@ -32,18 +32,11 @@ input[type="number"] {
   @apply border border-ob-gray/40 rounded-3xl bg-zinc-100;
 
   &__amount {
-    @apply w-full flex flex-col items-center justify-center;
+    @apply w-full;
 
     &__input {
-      @apply flex items-center justify-between;
-
-      &__symbol {
-        @apply text-4xl text-ob-gray;
-      }
-
-      &__number {
-        @apply text-4xl text-center border-none h-28 bg-transparent;
-      }
+      @apply text-4xl bg-transparent w-full border-none mt-4;
+      text-align: center !important;
     }
   }
 

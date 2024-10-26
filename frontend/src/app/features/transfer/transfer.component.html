@@ -1,26 +1,30 @@
 <app-sub-nav-mobile page="Transferir dinero" />
 
-<form [ngClass]="['transfer']" method="" action="">
+<form class="transfer" [formGroup]="transferForm" method="" action="">
   <!-- Monto de la transferencia -->
   <fieldset class="transfer__amount">
-    <label for="transfer-amount" class="visually-hidden transfer__amount__label"
-      >Monto a transferir</label
+    <label
+      for="transfer-amount"
+      class="visually-hidden transfer__amount__label"
     >
-    <div class="transfer__amount__input">
-      <span class="transfer__amount__input__symbol">$</span>
-      <input
-        class="transfer__amount__input__number"
-        type="text"
-        id="transfer-amount"
-        name="amount"
-        placeholder="0.00"
-        aria-label="Monto a transferir"
-        required
-      />
-    </div>
+      Monto a transferir
+    </label>
+    <!-- TODO Validar max $ 999.999.999 -->
+    <input
+      class="transfer__amount__input"
+      type="tel"
+      id="transfer-amount"
+      name="amount"
+      placeholder="0.00"
+      aria-label="Monto a transferir"
+      required
+      currencyMask
+      [currencyMask]="{ prefix: '$ ', thousands: '.', decimal: ',' }"
+      formControlName="amount"
+      (focus)="moveCursorToEnd($event)"
+    />
   </fieldset>
 
-  <!-- Detalles de la transferencia -->
   <fieldset class="transfer__details">
     <div class="transfer__details__field">
       <label for="transfer-destino">
@@ -52,7 +56,6 @@
     </div>
   </fieldset>
 
-  <!-- Botón de envío -->
   <button type="submit" class="transfer__submit">
     Transferir
     <span class="icon-[heroicons--banknotes-solid]" aria-hidden="true"></span>
