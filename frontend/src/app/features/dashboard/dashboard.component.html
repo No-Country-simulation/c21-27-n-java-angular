@@ -1,4 +1,10 @@
-<h1 class="{{obTitle({tag: 'h1'})}}">dashboard works!</h1>
-<h2 class="{{obTitle({tag: 'h2'})}}">Transactions</h2>
+<app-user-sesion name="Goku" />
 
-<app-account-balance />
+<section [ngClass]="['dashboard']">
+  <div [ngClass]="['balance', obPadding()]">
+    <app-account-balance [balance]="balance" />
+    <app-shortcuts />
+  </div>
+
+  <app-recents></app-recents>
+</section>

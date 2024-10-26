@@ -1,10 +1,12 @@
 package com.example.banca_online_c21.controllers;
 
 import com.example.banca_online_c21.config.JwtUtil;
+import com.example.banca_online_c21.dtos.responses.UserResponse;
 import com.example.banca_online_c21.entities.Account;
 import com.example.banca_online_c21.entities.Users;
 import com.example.banca_online_c21.repositories.AccountRepository;
 import com.example.banca_online_c21.repositories.UsersRepository;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -33,9 +35,9 @@ public class UsersController {
     private JwtUtil jwtUtil;
 
     @GetMapping
-    public List<Users> getAllUsers() {
+    public List<UserResponse> getAllUsers() {
 
-        return userRepository.findAll();
+        return userRepository.findAll().stream().map(this::entityToResponse).toList();
     }
 
     @DeleteMapping("/{id}")
@@ -88,9 +90,9 @@ public class UsersController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Users> getUserById(@PathVariable Integer id) {
+    public ResponseEntity<UserResponse> getUserById(@PathVariable Integer id) {
         return userRepository.findById(id)
-                .map(user -> ResponseEntity.ok().body(user))
+                .map(user -> ResponseEntity.ok().body(this.entityToResponse(user)))
                 .orElse(ResponseEntity.notFound().build());
     }
 
@@ -154,4 +156,10 @@ public class UsersController {
         return ResponseEntity.ok(savedUser);
     }
 
+    private UserResponse entityToResponse(Users entity) {
+        var response = new UserResponse();
+        BeanUtils.copyProperties(entity, response);
+        response.setAccountNumber(entity.getAccounts().getAccountNumber());
+        return response;
+    }
 }

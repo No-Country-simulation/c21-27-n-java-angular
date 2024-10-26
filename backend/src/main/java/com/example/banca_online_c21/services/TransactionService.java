@@ -1,6 +1,7 @@
 package com.example.banca_online_c21.services;
 
-import com.example.banca_online_c21.dtos.TransferRequest;
+
+import com.example.banca_online_c21.dtos.requests.TransferRequest;
 import com.example.banca_online_c21.entities.Account;
 import com.example.banca_online_c21.entities.TransactionEntity;
 import com.example.banca_online_c21.repositories.AccountRepository;
@@ -63,39 +64,39 @@ public class TransactionService implements ITransactionService {
         Font fontTitle = FontFactory.getFont(FontFactory.TIMES_ROMAN);
         fontTitle.setSize(20);
 
-        //var transaction = this.repository.findByOperationNumber(operationNumber).orElseThrow();
+        var transaction = this.repository.findByOperationNumber(operationNumber).orElseThrow();
         Paragraph p1 = new Paragraph("Comprobante de Transferencia", fontTitle);
         p1.setAlignment(Paragraph.ALIGN_CENTER);
         document.add(p1);
 
         Paragraph p2 = new Paragraph("Numero de operación: ");
         p2.setAlignment(Paragraph.ALIGN_LEFT);
-        p2.add("123456845");
+        p2.add(transaction.getOperationNumber().toString());
         document.add(p2);
 
         Paragraph p3 = new Paragraph("Cuenta de origen: ");
         p3.setAlignment(Paragraph.ALIGN_LEFT);
-        p3.add("454ALE34");
+        p3.add(transaction.getSourceAccount().getAccountNumber());
         document.add(p3);
 
         Paragraph p4 = new Paragraph("Cuenta de destino: ");
         p4.setAlignment(Paragraph.ALIGN_LEFT);
-        p4.add("XXXXXXX");
+        p4.add(transaction.getDestinationAccount().getAccountNumber());
         document.add(p4);
 
         Paragraph p5 = new Paragraph("Titular: ");
         p5.setAlignment(Paragraph.ALIGN_LEFT);
-        p5.add("John Doe");
+        p5.add(transaction.getDestinationAccount().getUser().getUsername());
         document.add(p5);
 
         Paragraph p6 = new Paragraph("Importe debitado: ");
         p6.setAlignment(Paragraph.ALIGN_LEFT);
-        p6.add("$15000");
+        p6.add(transaction.getAmount().toString());
         document.add(p6);
 
         Paragraph p7 = new Paragraph("Fecha: ");
         p7.setAlignment(Paragraph.ALIGN_LEFT);
-        p7.add("22/10/2024");
+        p7.add(transaction.getDate().toString());
         document.add(p7);
 
         document.close();
