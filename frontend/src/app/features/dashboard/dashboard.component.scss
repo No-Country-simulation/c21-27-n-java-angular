@@ -2,20 +2,16 @@
   @apply block w-full mx-auto;
 }
 
-.user {
-  @apply min-h-40;
-}
+.dashboard {
+  @apply flex flex-col gap-10;
 
-.asd {
-  @apply grid grid-cols-1 lg:grid-cols-2 mx-auto;
-}
+  .balance {
+    @apply lg:mt-0;
+    @apply flex flex-col gap-10 justify-center items-center;
+    @apply lg:items-start;
+  }
 
-.balance {
-  @apply mt-32 lg:mt-0;
-  @apply flex flex-col gap-10 justify-center items-center;
-  @apply lg:items-start;
-}
-
-.recent-transactions {
-  @apply mt-32 lg:mt-0;
+  .recent-transactions {
+    @apply mt-32 lg:mt-0;
+  }
 }
