@@ -1,0 +1,23 @@
+:host {
+  @apply block my-10;
+}
+
+.user {
+  @apply flex justify-center items-center gap-2;
+
+  &__logo {
+    @apply w-20 h-20 overflow-hidden object-contain;
+  }
+
+  &__text {
+    @apply pt-2;
+
+    &__name {
+      @apply font-bold;
+    }
+
+    &__greeting {
+      @apply text-sm text-ob-gray font-normal;
+    }
+  }
+}
