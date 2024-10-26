@@ -1,5 +1,6 @@
 import { CurrencyPipe, NgClass } from '@angular/common';
 import { Component } from '@angular/core';
+
 import { SubNavMobileComponent } from '../../core/sub-nav-mobile/sub-nav-mobile.component';
 
 @Component({
