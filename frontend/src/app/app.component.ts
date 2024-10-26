@@ -1,11 +1,16 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { NavMobileComponent } from './core/navbar/nav-mobile/nav-mobile.component';
+import { FooterComponent } from '@core/footer/footer.component';
+import { NavbarMobileComponent } from './core/navbar-mobile/navbar-mobile.component';
+import { obPadding } from '@styles/ob-box-model.tv';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, NavMobileComponent],
-  template: `<app-nav-mobile class="nav-mobile" /> <router-outlet />`,
+  imports: [RouterOutlet, NavbarMobileComponent, FooterComponent],
+  templateUrl: 'app.component.html',
+  styleUrl: 'app.component.scss',
 })
-export class AppComponent {}
+export class AppComponent {
+  obPadding = obPadding;
+}

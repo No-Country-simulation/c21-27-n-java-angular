@@ -1,0 +1,66 @@
+:host {
+  @apply block text-center px-4;
+}
+
+h1 {
+  @apply my-10 font-bold text-xs;
+}
+
+label {
+  @apply text-sm text-left text-ob-black/70;
+}
+
+input {
+  @apply border border-ob-gray/50 rounded-xl h-12 w-full;
+
+  &:focus-visible {
+    outline: none;
+  }
+}
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+.transfer {
+  @apply flex flex-col gap-8 justify-start items-center max-w-xl mx-auto;
+  @apply w-full px-4 py-10;
+  @apply border border-ob-gray/40 rounded-3xl;
+
+  &__amount {
+    @apply w-full flex flex-col items-center justify-center;
+
+    input,
+    &__number {
+      @apply text-5xl text-center border-none h-28 bg-transparent;
+    }
+  }
+
+  &__details {
+    @apply w-full flex flex-col gap-4;
+
+    &__field {
+      @apply text-left;
+
+      label {
+        @apply text-ob-terciary-dark-green;
+      }
+
+      input {
+        @apply pl-4;
+      }
+    }
+  }
+
+  &__submit {
+    @apply w-full text-white font-bold bg-ob-main-bright-green h-20 rounded-full border-4 border-ob-secondary-light-green hover:bg-ob-main-bright-green/90;
+  }
+}
+
+.powered {
+  @apply flex gap-1 justify-center items-center mt-4 text-xs font-bold;
+}

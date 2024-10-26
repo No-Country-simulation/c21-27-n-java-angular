@@ -1,2 +1,10 @@
-<p>dashboard works!</p>
-<app-account-balance />
+<app-user-sesion name="Goku" />
+
+<section [ngClass]="['dashboard']">
+  <div [ngClass]="['balance', obPadding()]">
+    <app-account-balance [balance]="balance" />
+    <app-shortcuts />
+  </div>
+
+  <app-recents></app-recents>
+</section>

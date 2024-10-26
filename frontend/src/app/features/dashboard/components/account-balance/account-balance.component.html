@@ -1,1 +1,18 @@
-<p>account-balance works!</p>
+<div class="showBalance">
+  <p class="slug">Tu dinero</p>
+  <button (click)="toggleBalanceVisibility()">
+    @if (showBalance) {
+    <span class="icon-[heroicons--eye-slash-20-solid] text-ob-black/70"></span>
+    } @else {
+    <span class="icon-[heroicons--eye-solid] text-ob-black"></span>
+    }
+  </button>
+</div>
+
+<p [ngClass]="['balance', obBalance()]">
+  @if (balance.includes('*') || !showBalance) {
+  ********
+  } @else {
+  {{balance | currency}}
+  }
+</p>
