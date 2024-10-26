@@ -115,14 +115,14 @@ public class UsersController {
         }
 
         // Construir el número de cuenta
-        // Ejemplo de formato: L1 D D D D L2 D D D D L3 D D D D L4
+        // formato: L1 D D D D L2 D D D D L3 D D D D L4
         accountNumber.append(firstLetter); // Letra al inicio
         accountNumber.append(digits.substring(0, 4)); // Primeros 4 dígitos
-        accountNumber.append(secondLetter); // Segunda letra
-        accountNumber.append(digits.substring(4, 8)); // Siguientes 4 dígitos
-        accountNumber.append(thirdLetter); // Tercera letra
-        accountNumber.append(digits.substring(8)); // Últimos 4 dígitos
-        accountNumber.append(fourthLetter); // Cuarta letra al final
+        accountNumber.append(secondLetter);
+        accountNumber.append(digits.substring(4, 8));
+        accountNumber.append(thirdLetter);
+        accountNumber.append(digits.substring(8));
+        accountNumber.append(fourthLetter);
 
         return accountNumber.toString();
     }

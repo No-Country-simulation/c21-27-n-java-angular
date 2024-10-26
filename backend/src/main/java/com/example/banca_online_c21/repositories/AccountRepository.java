@@ -9,7 +9,7 @@ import java.util.Optional;
 
 @Repository
 public interface AccountRepository extends JpaRepository<Account, String> {
-    // Método para obtener cuentas por usuario
+    // Metodo para obtener cuentas por usuario
     List<Account> findByUserId(Integer userId);
 
     Optional<Account> findByAccountNumber(String accountNumber);
