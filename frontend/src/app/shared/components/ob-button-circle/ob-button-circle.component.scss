@@ -1,0 +1,7 @@
+:host {
+  @apply flex flex-col gap-1 justify-center items-center w-fit;
+}
+
+.ob-label {
+  @apply w-14 lg:w-16 text-xs select-none overflow-hidden text-ellipsis text-center;
+}

@@ -1,0 +1,11 @@
+:host {
+  @apply flex flex-col gap-4;
+}
+
+.showBalance {
+  @apply flex gap-1 items-center justify-center lg:justify-start;
+
+  .slug {
+    @apply text-center lg:text-left text-ob-terciary-dark-green m-0 leading-none;
+  }
+}

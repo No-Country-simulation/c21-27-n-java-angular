@@ -1,0 +1,17 @@
+:host {
+  @apply block w-full mx-auto;
+}
+
+.dashboard {
+  @apply flex flex-col gap-10;
+
+  .balance {
+    @apply lg:mt-0;
+    @apply flex flex-col gap-10 justify-center items-center;
+    @apply lg:items-start;
+  }
+
+  .recent-transactions {
+    @apply mt-32 lg:mt-0;
+  }
+}

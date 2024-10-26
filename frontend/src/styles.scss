@@ -9,7 +9,7 @@
     font-style: normal;
     font-weight: 400;
     font-display: swap;
-    src: url(assets/LufgaRegular.ttf) format("ttf");
+    src: url(assets/fonts/LufgaRegular.ttf) format("ttf");
   }
 
   @font-face {
@@ -17,7 +17,7 @@
     font-style: normal;
     font-weight: 700;
     font-display: swap;
-    src: url(assets/LufgaBold.ttf) format("ttf");
+    src: url(assets/fonts/LufgaBold.ttf) format("ttf");
   }
 
   @font-face {
@@ -25,7 +25,7 @@
     font-style: normal;
     font-weight: 800;
     font-display: swap;
-    src: url(assets/LufgaExtraBold.ttf) format("ttf");
+    src: url(assets/fonts/LufgaExtraBold.ttf) format("ttf");
   }
 
   @font-face {
@@ -33,7 +33,7 @@
     font-style: normal;
     font-weight: 900;
     font-display: swap;
-    src: url(assets/LufgaBlack.ttf) format("ttf");
+    src: url(assets/fonts/LufgaBlack.ttf) format("ttf");
   }
 
   @font-face {
@@ -41,7 +41,7 @@
     font-style: normal;
     font-weight: 100;
     font-display: swap;
-    src: url(assets/LufgaThin.ttf) format("ttf");
+    src: url(assets/fonts/LufgaThin.ttf) format("ttf");
   }
 
   @font-face {
@@ -49,7 +49,7 @@
     font-style: normal;
     font-weight: 300;
     font-display: swap;
-    src: url(assets/LufgaLight.ttf) format("ttf");
+    src: url(assets/fonts/LufgaLight.ttf) format("ttf");
   }
 
   @font-face {
@@ -57,7 +57,7 @@
     font-style: normal;
     font-weight: 500;
     font-display: swap;
-    src: url(assets/LufgaMedium.ttf) format("ttf");
+    src: url(assets/fonts/LufgaMedium.ttf) format("ttf");
   }
 
   @font-face {
@@ -65,7 +65,7 @@
     font-style: normal;
     font-weight: 600;
     font-display: swap;
-    src: url(assets/LufgaSemiBold.ttf) format("ttf");
+    src: url(assets/fonts/LufgaSemiBold.ttf) format("ttf");
   }
 
   @font-face {
@@ -73,7 +73,7 @@
     font-style: normal;
     font-weight: 200;
     font-display: swap;
-    src: url(assets/LufgaExtraLight.ttf) format("ttf");
+    src: url(assets/fonts/LufgaExtraLight.ttf) format("ttf");
   }
 
   @font-face {
@@ -81,7 +81,7 @@
     font-style: italic;
     font-weight: 400;
     font-display: swap;
-    src: url(assets/LufgaItalic.ttf) format("ttf");
+    src: url(assets/fonts/LufgaItalic.ttf) format("ttf");
   }
 
   @font-face {
@@ -89,7 +89,7 @@
     font-style: italic;
     font-weight: 700;
     font-display: swap;
-    src: url(assets/LufgaBoldItalic.ttf) format("ttf");
+    src: url(assets/fonts/LufgaBoldItalic.ttf) format("ttf");
   }
 
   @font-face {
@@ -97,7 +97,7 @@
     font-style: italic;
     font-weight: 800;
     font-display: swap;
-    src: url(assets/LufgaExtraBoldItalic.ttf) format("ttf");
+    src: url(assets/fonts/LufgaExtraBoldItalic.ttf) format("ttf");
   }
 
   @font-face {
@@ -105,7 +105,7 @@
     font-style: italic;
     font-weight: 900;
     font-display: swap;
-    src: url(assets/LufgaBlackItalic.ttf) format("ttf");
+    src: url(assets/fonts/LufgaBlackItalic.ttf) format("ttf");
   }
 
   @font-face {
@@ -113,7 +113,7 @@
     font-style: italic;
     font-weight: 100;
     font-display: swap;
-    src: url(assets/LufgaThinItalic.ttf) format("ttf");
+    src: url(assets/fonts/LufgaThinItalic.ttf) format("ttf");
   }
 
   @font-face {
@@ -121,7 +121,7 @@
     font-style: italic;
     font-weight: 300;
     font-display: swap;
-    src: url(assets/LufgaLightItalic.ttf) format("ttf");
+    src: url(assets/fonts/LufgaLightItalic.ttf) format("ttf");
   }
 
   @font-face {
@@ -129,7 +129,7 @@
     font-style: italic;
     font-weight: 500;
     font-display: swap;
-    src: url(assets/LufgaMediumItalic.ttf) format("ttf");
+    src: url(assets/fonts/LufgaMediumItalic.ttf) format("ttf");
   }
 
   @font-face {
@@ -137,7 +137,7 @@
     font-style: italic;
     font-weight: 600;
     font-display: swap;
-    src: url(assets/LufgaSemiBoldItalic.ttf) format("ttf");
+    src: url(assets/fonts/LufgaSemiBoldItalic.ttf) format("ttf");
   }
 
   @font-face {
@@ -145,10 +145,12 @@
     font-style: italic;
     font-weight: 200;
     font-display: swap;
-    src: url(assets/LufgaExtraLightItalic.ttf) format("ttf");
+    src: url(assets/fonts/LufgaExtraLightItalic.ttf) format("ttf");
   }
 }
 
+html,
 body {
   font-family: "Lufga", sans-serif;
+  @apply bg-neutral-50;
 }
