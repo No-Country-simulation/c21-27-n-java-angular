@@ -88,14 +88,21 @@
   </fieldset>
 
   <button
-    type="submit"
+    type="button"
     class="transfer__submit"
     [disabled]="!transferForm.valid"
+    (click)="onSubmit()"
   >
     Transferir
     <span class="icon-[heroicons--banknotes-solid]" aria-hidden="true"></span>
   </button>
 </form>
+
+<app-transfer-confirm
+  *ngIf="showModal()"
+  (confirmed)="onModalConfirmed($event)"
+>
+</app-transfer-confirm>
 
 <p class="powered">
   powered by

@@ -1,7 +1,7 @@
 import { NgxCurrencyDirective } from 'ngx-currency';
 
 import { CommonModule, CurrencyPipe, NgClass } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, signal } from '@angular/core';
 import {
   FormBuilder,
   FormGroup,
@@ -9,6 +9,7 @@ import {
   Validators,
 } from '@angular/forms';
 import { SubNavMobileComponent } from '@core/sub-nav-mobile/sub-nav-mobile.component';
+import { TransferConfirmComponent } from './components/transfer-confirm/transfer-confirm.component';
 
 @Component({
   selector: 'app-transfer',
@@ -20,12 +21,14 @@ import { SubNavMobileComponent } from '@core/sub-nav-mobile/sub-nav-mobile.compo
     NgxCurrencyDirective,
     ReactiveFormsModule,
     CommonModule,
+    TransferConfirmComponent,
   ],
   templateUrl: './transfer.component.html',
   styleUrls: ['./transfer.component.scss'],
 })
 export class TransferComponent {
   transferForm: FormGroup;
+  showModal = signal(false);
 
   constructor(private formBuilder: FormBuilder) {
     this.transferForm = this.formBuilder.group({
@@ -36,25 +39,23 @@ export class TransferComponent {
   }
 
   onSubmit() {
-    if (this.transferForm.valid) {
-      console.log(this.transferForm.value);
-    }
+    this.showModal.set(true);
   }
 
   // Métodos para obtener mensajes de error
   getErrorMessage(controlName: string): string | null {
     const control = this.transferForm.get(controlName);
 
-    if (control?.hasError('required')) {
-      return 'Este campo es obligatorio';
+    switch (true) {
+      case control?.hasError('required'):
+        return 'Este campo es obligatorio';
+      case control?.hasError('min'):
+        return 'Monto mínimo $100,00';
+      case control?.hasError('maxlength'):
+        return 'Máximo 20 caracteres permitidos';
+      default:
+        return null;
     }
-    if (control?.hasError('min')) {
-      return 'Monto mínimo $100,00';
-    }
-    if (control?.hasError('maxlength')) {
-      return 'Máximo 20 caracteres permitidos';
-    }
-    return null;
   }
 
   get amountCtl() {
@@ -74,5 +75,13 @@ export class TransferComponent {
     setTimeout(() => {
       input.setSelectionRange(input.value.length, input.value.length);
     }, 0);
+  }
+
+  onModalConfirmed(confirmed: boolean) {
+    this.showModal.set(false);
+    if (confirmed) {
+      // Aquí iría la lógica de la transferencia
+      console.log('Transferencia confirmada.');
+    }
   }
 }
