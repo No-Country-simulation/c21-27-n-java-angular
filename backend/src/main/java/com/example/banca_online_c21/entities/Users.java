@@ -5,46 +5,24 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
-import java.util.List;
-
 @Table(name = "users")
 @Getter
 @Setter
 @Entity
 public class Users {
 
-//    @Id
-//    @GeneratedValue(strategy = GenerationType.IDENTITY)
-//    private Integer id;
-//
-//    @Column(nullable = false, unique = true)
-//    private String username;
-//
-//    @Column(nullable = false)
-//    private String password;
-//
-//    @OneToOne(mappedBy = "user")
-//    @JsonManagedReference
-//    private Account accounts;
-//
-//    // Relación OneToMany con Account
-//    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-//    @JsonManagedReference
-//    private List<Account> accounts;
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Integer id;
 
-    @Column(nullable = false)
+    @Column(nullable = false, unique = true)
     private String username;
 
     @Column(nullable = false)
     private String password;
 
-    // Relación OneToMany con Account
-    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @OneToOne(mappedBy = "user")
     @JsonManagedReference
-    private List<Account> accounts;
+    private Account accounts;
 
 }
