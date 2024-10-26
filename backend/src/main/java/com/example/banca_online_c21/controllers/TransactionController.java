@@ -28,13 +28,13 @@ public class TransactionController {
     private final ITransactionService transactionService;
 
     @GetMapping
-    List<TransactionEntity> getAll() {
-        return this.transactionService.getAll();
+    List<TransactionResponse> getAll() {
+        return this.transactionService.getAll().stream().map(this::entityToResponse).toList();
     }
 
     @GetMapping("/{id}")
-    ResponseEntity<TransactionEntity> getById(@PathVariable Long id) {
-        return ResponseEntity.ok(this.transactionService.findById(id));
+    ResponseEntity<TransactionResponse> getById(@PathVariable Long id) {
+        return ResponseEntity.ok(this.entityToResponse(this.transactionService.findById(id)));
     }
 
     @DeleteMapping("/{id}")

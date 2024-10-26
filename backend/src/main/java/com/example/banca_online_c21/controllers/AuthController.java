@@ -2,7 +2,7 @@ package com.example.banca_online_c21.controllers;
 
 import com.example.banca_online_c21.config.JwtUtil;
 import com.example.banca_online_c21.dtos.responses.AuthenticationResponse;
-import com.example.banca_online_c21.entities.AuthenticationRequest;
+import com.example.banca_online_c21.dtos.requests.AuthenticationRequest;
 import com.example.banca_online_c21.entities.Users;
 import com.example.banca_online_c21.repositories.AccountRepository;
 import com.example.banca_online_c21.repositories.UsersRepository;

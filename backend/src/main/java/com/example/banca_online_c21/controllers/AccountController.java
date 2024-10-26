@@ -4,6 +4,7 @@ import com.example.banca_online_c21.dtos.requests.BalanceUpdateRequest;
 import com.example.banca_online_c21.dtos.responses.AccountResponse;
 import com.example.banca_online_c21.dtos.responses.TransactionResponse;
 import com.example.banca_online_c21.entities.Account;
+import com.example.banca_online_c21.entities.TransactionEntity;
 import com.example.banca_online_c21.repositories.AccountRepository;
 import com.example.banca_online_c21.services.AccountService;
 import org.springframework.beans.BeanUtils;
@@ -73,7 +74,7 @@ public class AccountController {
         var account = this.accountRepository.findByAccountNumber(accountNumber).orElseThrow();
         return ResponseEntity.ok(account.getTransactions().stream().map(this::entityToRes).toList());
     }
-  
+
     @PostMapping("/balance")
     public ResponseEntity<String> addBalance(@RequestBody BalanceUpdateRequest balanceUpdateRequest) {
         try {
