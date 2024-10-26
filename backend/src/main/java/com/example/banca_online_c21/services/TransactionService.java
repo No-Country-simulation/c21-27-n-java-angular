@@ -1,6 +1,6 @@
 package com.example.banca_online_c21.services;
 
-import com.example.banca_online_c21.DTO.TransferRequest;
+import com.example.banca_online_c21.dtos.TransferRequest;
 import com.example.banca_online_c21.entities.Account;
 import com.example.banca_online_c21.entities.TransactionEntity;
 import com.example.banca_online_c21.repositories.AccountRepository;

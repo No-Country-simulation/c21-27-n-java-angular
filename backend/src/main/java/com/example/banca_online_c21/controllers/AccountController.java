@@ -1,6 +1,6 @@
 package com.example.banca_online_c21.controllers;
 
-import com.example.banca_online_c21.DTO.BalanceUpdateRequest;
+import com.example.banca_online_c21.dtos.BalanceUpdateRequest;
 import com.example.banca_online_c21.entities.Account;
 import com.example.banca_online_c21.repositories.AccountRepository;
 import com.example.banca_online_c21.services.AccountService;
@@ -64,14 +64,6 @@ public class AccountController {
         balance.put("balance", account.getBalance());
         return ResponseEntity.ok(balance);
     }
-
-//    @GetMapping("transactions/{accountNumber}")
-//    public ResponseEntity<Map<String, List<TransactionEntity>>> getTransactions(@PathVariable String accountNumber) {
-//        Map<String, List<TransactionEntity>> transactions = new HashMap<>();
-//        var account = this.accountRepository.findByAccountNumber(accountNumber).orElseThrow();
-//        transactions.put("transactions", account.getTransactions());
-//        return ResponseEntity.ok(transactions);
-//    }
 
     @PostMapping("/balance")
     public ResponseEntity<String> addBalance(@RequestBody BalanceUpdateRequest balanceUpdateRequest) {

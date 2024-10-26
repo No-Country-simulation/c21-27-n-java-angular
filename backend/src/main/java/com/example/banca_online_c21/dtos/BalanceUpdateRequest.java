@@ -1,4 +1,4 @@
-package com.example.banca_online_c21.DTO;
+package com.example.banca_online_c21.dtos;
 
 import lombok.Getter;
 import lombok.Setter;

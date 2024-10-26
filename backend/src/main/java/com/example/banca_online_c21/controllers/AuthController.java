@@ -1,7 +1,7 @@
 package com.example.banca_online_c21.controllers;
 
 import com.example.banca_online_c21.config.JwtUtil;
-import com.example.banca_online_c21.entities.Account;
+import com.example.banca_online_c21.dtos.responses.AuthenticationResponse;
 import com.example.banca_online_c21.entities.AuthenticationRequest;
 import com.example.banca_online_c21.entities.Users;
 import com.example.banca_online_c21.repositories.AccountRepository;
@@ -19,8 +19,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import java.util.List;
-import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/api/auth")
@@ -61,34 +59,7 @@ public class AuthController {
                 .orElseThrow(() -> new UsernameNotFoundException("User not found"));
 
         // Obtener las cuentas asociadas al usuario
-        List<Account> accounts = accountRepository.findByUserId(Math.toIntExact(user.getId()));
-        List<String> accountNames = accounts.stream()
-                .map(Account::getAccountNumber) //
-                .collect(Collectors.toList());
-
-        return ResponseEntity.ok(new AuthenticationResponse(jwt, accountNames));
-    }
-
-    public class AuthenticationResponse {
-        private String jwt;
-        private List<String> accountNames;
-
-
-        public AuthenticationResponse(String jwt, List<String> accountNames) {
-
-            this.jwt = jwt;
-            this.accountNames = accountNames;
-        }
-
-        public String getJwt() {
-
-            return jwt;
-        }
-
-        public List<String> getAccountNames() {
-            return accountNames;
-        }
-
-
+        var account = accountRepository.findByAccountNumber(user.getAccounts().getAccountNumber()).orElseThrow();
+        return ResponseEntity.ok(new AuthenticationResponse(jwt, account.getAccountNumber()));
     }
 }

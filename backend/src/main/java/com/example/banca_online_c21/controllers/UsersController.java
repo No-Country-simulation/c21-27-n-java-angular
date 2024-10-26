@@ -10,6 +10,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
+
 import java.util.List;
 import java.util.Optional;
 import java.util.Random;
@@ -37,13 +38,8 @@ public class UsersController {
         return userRepository.findAll();
     }
 
-//    @PostMapping
-//    public Users createUser(@RequestBody Users user) {
-//        return userRepository.save(user);
-//    }
-
     @DeleteMapping("/{id}")
-    public ResponseEntity<String> deleteUser (@PathVariable Integer id) {
+    public ResponseEntity<String> deleteUser(@PathVariable Integer id) {
         // Verificar si el usuario existe
         Optional<Users> userOptional = userRepository.findById(id);
         if (!userOptional.isPresent()) {
@@ -63,7 +59,7 @@ public class UsersController {
     }
 
     @PostMapping
-    public ResponseEntity<Users> createUser (@RequestBody Users user) {
+    public ResponseEntity<Users> createUser(@RequestBody Users user) {
         // Validaciones simples
         if (user.getUsername() == null || user.getUsername().isEmpty()) {
             return ResponseEntity.badRequest().body(null); // Manejo de error
@@ -74,21 +70,21 @@ public class UsersController {
         }
 
         // Guardar el usuario sin hashear la contraseña
-        Users savedUser  = userRepository.save(user);
+        Users savedUser = userRepository.save(user);
 
         // Crear una cuenta automáticamente
         Account newAccount;
         do {
             newAccount = new Account();
             newAccount.setAccountNumber(generateRandomAccountNumber());
-            newAccount.setUser (savedUser );
+            newAccount.setUser(savedUser);
             newAccount.setBalance(0.0); // Balance inicial de cero
         } while (accountRepository.existsByAccountNumber(newAccount.getAccountNumber())); // Verificar si la cuenta ya existe
 
         // Guardar la cuenta
         accountRepository.save(newAccount);
 
-        return ResponseEntity.ok(savedUser );
+        return ResponseEntity.ok(savedUser);
     }
 
     @GetMapping("/{id}")
@@ -98,39 +94,6 @@ public class UsersController {
                 .orElse(ResponseEntity.notFound().build());
     }
 
-//    @PostMapping("/{userId}/assign-account")
-//    public ResponseEntity<String> assignAccountToUser (@PathVariable Integer userId) {
-//        // Verificar si el usuario existe
-//        Optional<Users> userOptional = userRepository.findById(userId);
-//        if (!userOptional.isPresent()) {
-//            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Usuario no encontrado."); // 404 Not Found
-//        }
-//
-//        Users user = userOptional.get();
-//
-//        // Verificar si el usuario ya tiene una cuenta
-//        if (user.getAccounts() != null) {
-//            return ResponseEntity.status(HttpStatus.CONFLICT).body("El usuario ya tiene una cuenta asociada."); // 409 Conflict
-//        }
-//
-//        // Crear una nueva cuenta
-//        Account newAccount;
-//        do {
-//            newAccount = new Account();
-//            newAccount.setAccountNumber(generateRandomAccountNumber());
-//            newAccount.setUser (user);
-//            newAccount.setBalance(0.0); // Balance inicial de cero
-//        } while (accountRepository.existsByAccountNumber(newAccount.getAccountNumber())); // Verificar si la cuenta ya existe
-//
-//        // Guardar la cuenta
-//        accountRepository.save(newAccount);
-//
-//        // Asignar la cuenta al usuario
-//        user.setAccounts(newAccount); // Asegúrate de que el método setAccount esté disponible en tu clase Users
-//        userRepository.save(user); // Guardar el usuario con la nueva cuenta
-//
-//        return ResponseEntity.ok("Cuenta asignada al usuario con éxito."); // 200 OK
-//    }
     // Metodo para generar un número de cuenta aleatorio
     private String generateRandomAccountNumber() {
         String letters = "JAOB";
@@ -167,7 +130,7 @@ public class UsersController {
     public ResponseEntity<?> registerUser(@RequestBody Users user) {
         // Verificar si el nombre de usuario ya existe
         if (userRepository.findByUsername(user.getUsername()).isPresent()) {
-           // return ResponseEntity.status(409).build(); // 409 Conflict
+            // return ResponseEntity.status(409).build(); // 409 Conflict
             return ResponseEntity.status(409).body("El nombre de usuario ya está en uso.");
 
         }
@@ -181,7 +144,7 @@ public class UsersController {
         do {
             newAccount = new Account();
             newAccount.setAccountNumber(generateRandomAccountNumber());
-            newAccount.setUser (savedUser );
+            newAccount.setUser(savedUser);
             newAccount.setBalance(0.0); // Balance inicial de cero
         } while (accountRepository.existsByAccountNumber(newAccount.getAccountNumber())); // Verificar si la cuenta ya existe
 
@@ -190,20 +153,5 @@ public class UsersController {
 
         return ResponseEntity.ok(savedUser);
     }
-
-//    @PostMapping("/login")
-//    public ResponseEntity<String> loginUser(@RequestBody Users user) {
-//        // Encontrar el usuario por username
-//        Users existingUser = userRepository.findByUsername(user.getUsername())
-//                .orElseThrow(() -> new RuntimeException("Usuario no encontrado"));
-//
-//        // Verificar si la contraseña es correcta
-//        if (!passwordEncoder.matches(user.getPassword(), existingUser.getPassword())) {
-//            return ResponseEntity.status(401).body("Contraseña incorrecta");
-//        }
-//
-//        return ResponseEntity.ok("Login exitoso");
-//    }
-
 
 }

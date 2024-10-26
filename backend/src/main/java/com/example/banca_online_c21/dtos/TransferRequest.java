@@ -1,13 +1,13 @@
-package com.example.banca_online_c21.DTO;
+package com.example.banca_online_c21.dtos;
 
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Pattern;
+import jakarta.validation.constraints.Positive;
 import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Pattern;
-import javax.validation.constraints.Positive;
 
 @Data
 @Getter
@@ -19,7 +19,8 @@ public class TransferRequest {
     private String sourceAccount; // Número de cuenta de origen
 
     @NotBlank(message = "El número de cuenta de destino no puede estar vacío.")
-    @Pattern(regexp = "^[JAOB][0-9]{4}[JAOB][0-9]{4}[JAOB][0-9]{4}[JAOB]$", message = "El número de cuenta de destino debe tener el formato correcto.")
+    @Pattern(regexp = "^[JAOB][0-9]{4}[JAOB][0-9]{4}[JAOB][0-9]{4}[JAOB]$", message = "El número de cuenta de destino" +
+            " debe tener el formato correcto.")
     private String destinationAccount; // Número de cuenta de destino
 
     @NotNull(message = "El monto no puede ser nulo.")

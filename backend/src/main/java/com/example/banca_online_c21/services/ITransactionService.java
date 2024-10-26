@@ -1,6 +1,6 @@
 package com.example.banca_online_c21.services;
 
-import com.example.banca_online_c21.DTO.TransferRequest;
+import com.example.banca_online_c21.dtos.TransferRequest;
 import com.example.banca_online_c21.entities.TransactionEntity;
 import jakarta.servlet.http.HttpServletResponse;
 import javax.security.auth.login.AccountNotFoundException;
