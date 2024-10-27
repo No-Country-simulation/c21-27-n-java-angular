@@ -13,4 +13,9 @@ public interface TransactionRepository extends JpaRepository<TransactionEntity, 
 
     Optional<TransactionEntity> findByOperationNumber(UUID operationNumber);
 
+    List<TransactionEntity> findBySourceAccount_AccountNumber(String accountNumber);
+
+    List<TransactionEntity> findByDestinationAccount_AccountNumber(String accountNumber);
+
+
 }

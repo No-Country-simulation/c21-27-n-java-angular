@@ -1,6 +1,7 @@
 package com.example.banca_online_c21.services;
 
-import com.example.banca_online_c21.DTO.TransferRequest;
+
+import com.example.banca_online_c21.dtos.requests.TransferRequest;
 import com.example.banca_online_c21.entities.Account;
 import com.example.banca_online_c21.entities.TransactionEntity;
 import com.example.banca_online_c21.repositories.AccountRepository;
@@ -11,12 +12,9 @@ import jakarta.servlet.http.HttpServletResponse;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
-
 import javax.security.auth.login.AccountNotFoundException;
 import java.io.IOException;
-import java.time.LocalDateTime;
 import java.util.List;
 import java.util.UUID;
 
@@ -30,6 +28,14 @@ public class TransactionService implements ITransactionService {
 
     private final AccountRepository accountRepository;
 
+    private static final String ACCOUNT_NUMBER_PATTERN = "^[JAOB][0-9]{4}[JAOB][0-9]{4}[JAOB][0-9]{4}[JAOB]$";
+
+
+    @Override
+    public List<TransactionEntity> findByAccountNumber(String accountNumber) {
+        return repository.findBySourceAccount_AccountNumber(accountNumber);
+    }
+
     @Override
     public List<TransactionEntity> getAll() {
         return repository.findAll();
@@ -40,8 +46,6 @@ public class TransactionService implements ITransactionService {
         var fromDB = repository.findById(id).orElseThrow();
         return fromDB;
     }
-
-
 
 
     @Override
@@ -60,47 +64,62 @@ public class TransactionService implements ITransactionService {
         Font fontTitle = FontFactory.getFont(FontFactory.TIMES_ROMAN);
         fontTitle.setSize(20);
 
-        //var transaction = this.repository.findByOperationNumber(operationNumber).orElseThrow();
+        var transaction = this.repository.findByOperationNumber(operationNumber).orElseThrow();
         Paragraph p1 = new Paragraph("Comprobante de Transferencia", fontTitle);
         p1.setAlignment(Paragraph.ALIGN_CENTER);
         document.add(p1);
 
         Paragraph p2 = new Paragraph("Numero de operación: ");
         p2.setAlignment(Paragraph.ALIGN_LEFT);
-        p2.add("123456845");
+        p2.add(transaction.getOperationNumber().toString());
         document.add(p2);
 
         Paragraph p3 = new Paragraph("Cuenta de origen: ");
         p3.setAlignment(Paragraph.ALIGN_LEFT);
-        p3.add("454ALE34");
+        p3.add(transaction.getSourceAccount().getAccountNumber());
         document.add(p3);
 
         Paragraph p4 = new Paragraph("Cuenta de destino: ");
         p4.setAlignment(Paragraph.ALIGN_LEFT);
-        p4.add("XXXXXXX");
+        p4.add(transaction.getDestinationAccount().getAccountNumber());
         document.add(p4);
 
         Paragraph p5 = new Paragraph("Titular: ");
         p5.setAlignment(Paragraph.ALIGN_LEFT);
-        p5.add("John Doe");
+        p5.add(transaction.getDestinationAccount().getUser().getUsername());
         document.add(p5);
 
         Paragraph p6 = new Paragraph("Importe debitado: ");
         p6.setAlignment(Paragraph.ALIGN_LEFT);
-        p6.add("$15000");
+        p6.add(transaction.getAmount().toString());
         document.add(p6);
 
         Paragraph p7 = new Paragraph("Fecha: ");
         p7.setAlignment(Paragraph.ALIGN_LEFT);
-        p7.add("22/10/2024");
+        p7.add(transaction.getDate().toString());
         document.add(p7);
 
         document.close();
     }
 
-
+    @Transactional
     @Override
     public void transferFunds(TransferRequest transferRequest) throws AccountNotFoundException {
+
+        // Validar formato del número de cuenta de origen
+        if (!transferRequest.getSourceAccount().matches(ACCOUNT_NUMBER_PATTERN)) {
+            throw new IllegalArgumentException("El número de cuenta de origen tiene un formato incorrecto.");
+        }
+
+        // Validar formato del número de cuenta de destino
+        if (!transferRequest.getDestinationAccount().matches(ACCOUNT_NUMBER_PATTERN)) {
+            throw new IllegalArgumentException("El número de cuenta de destino tiene un formato incorrecto.");
+        }
+
+        // Verificar que el monto sea positivo
+        if (transferRequest.getAmount() == null || transferRequest.getAmount() <= 0) {
+            throw new IllegalArgumentException("El monto debe ser mayor a 0.");
+        }
         // Validar que la cuenta de origen exista
         Account sourceAccount = accountRepository.findByAccountNumber(transferRequest.getSourceAccount())
                 .orElseThrow(() -> new AccountNotFoundException("Cuenta de origen no encontrada."));
