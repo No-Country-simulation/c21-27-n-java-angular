@@ -100,7 +100,7 @@
 
 <app-transfer-confirm
   *ngIf="showModal()"
-  [transferData]="transferForm.value"
+  [transferData]="transferBody"
   (confirmed)="onModalConfirmed($event)"
 >
 </app-transfer-confirm>

@@ -11,13 +11,13 @@
 
     <section class="modal__info">
       <p class="modal__info__label">Cuenta Origen</p>
-      <p class="modal__info__data">{{ sourceAccount }}</p>
+      <p class="modal__info__data">{{ transferData.source }}</p>
 
       <p class="modal__info__label">Cuenta Destino</p>
-      <p class="modal__info__data">{{ transferData?.destination }}</p>
+      <p class="modal__info__data">{{ transferData.destination }}</p>
 
       <p class="modal__info__label">Monto</p>
-      <p class="modal__info__data">{{ transferData?.amount | currency }}</p>
+      <p class="modal__info__data">{{ transferData.amount | currency }}</p>
     </section>
 
     <div class="modal__buttons">

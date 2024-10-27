@@ -10,6 +10,8 @@ import {
 } from '@angular/forms';
 import { SubNavMobileComponent } from '@core/sub-nav-mobile/sub-nav-mobile.component';
 import { TransferConfirmComponent } from './components/transfer-confirm/transfer-confirm.component';
+import { TransferConfirm } from './types/transfer-confirm.type';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 @Component({
   selector: 'app-transfer',
@@ -28,17 +30,30 @@ import { TransferConfirmComponent } from './components/transfer-confirm/transfer
 })
 export class TransferComponent {
   transferForm: FormGroup;
-  showModal = signal(true);
+  transferBody: TransferConfirm;
+  showModal = signal(false);
 
-  constructor(private formBuilder: FormBuilder) {
-    this.transferForm = this.formBuilder.group({
+  constructor(private _formBuilder: FormBuilder, private _http: HttpClient) {
+    this.transferForm = this._formBuilder.group({
       amount: [0, [Validators.required, Validators.min(100)]],
       destination: ['', [Validators.required]],
       description: ['', [Validators.maxLength(20)]],
     });
+
+    this.transferBody = {
+      amount: '',
+      destination: '',
+      source: '',
+      description: '',
+    };
   }
 
   onSubmit() {
+    this.transferBody = {
+      ...this.transferForm.value,
+      source: 'ZYXWVU987',
+    };
+
     this.showModal.set(true);
   }
 
@@ -77,10 +92,17 @@ export class TransferComponent {
     }, 0);
   }
 
+  // TODO
   onModalConfirmed(confirmed: boolean) {
     this.showModal.set(false);
     if (confirmed) {
-      // Aquí iría la lógica de la transferencia
+      // const token = '';
+      // const headers = new HttpHeaders({
+      //   'Content-Type': 'application/json',
+      //   Authorization: `Bearer ${token}`,
+      // });
+      // this._http.post('', this.transferBody, { headers });
+
       console.log('Transferencia confirmada.');
     }
   }

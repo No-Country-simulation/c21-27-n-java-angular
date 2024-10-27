@@ -1,11 +1,6 @@
 import { CurrencyPipe, NgOptimizedImage } from '@angular/common';
 import { Component, Output, EventEmitter, Input } from '@angular/core';
-
-export type Transfer = {
-  amount: string;
-  destination: string;
-  description?: string;
-};
+import { TransferConfirm } from '@features/transfer/types/transfer-confirm.type';
 
 @Component({
   standalone: true,
@@ -15,24 +10,8 @@ export type Transfer = {
   imports: [CurrencyPipe, NgOptimizedImage],
 })
 export class TransferConfirmComponent {
-  sourceAccount = '9A8B7C6D';
-
-  @Input({ required: true }) transferData?: Transfer;
+  @Input({ required: true }) transferData!: TransferConfirm;
   @Output() confirmed = new EventEmitter<boolean>();
-
-  constructor() {}
-
-  ngOnInit() {
-    this.transferData = {
-      amount: '18822',
-      destination: 'A1B2C3E4',
-      description: '',
-    };
-  }
-
-  ngOnChanges() {
-    console.log(this.transferData);
-  }
 
   confirm() {
     this.confirmed.emit(true);
