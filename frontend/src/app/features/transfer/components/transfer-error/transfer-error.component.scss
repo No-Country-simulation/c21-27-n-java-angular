@@ -1,0 +1,15 @@
+:host {
+  position: absolute;
+  top: 0;
+  left: 50;
+  transform: translateX(-50%) translateY(-200%);
+  @apply w-2/3 lg:w-1/2 h-20 text-white rounded-b-lg bg-ob-danger-red shadow transition-all delay-300;
+
+  &.onError {
+    transform: translate(-50%, -50%);
+  }
+}
+
+p {
+  @apply h-full w-full flex justify-center items-center text-sm text-pretty;
+}

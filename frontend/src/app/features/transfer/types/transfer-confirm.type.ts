@@ -1,4 +1,4 @@
-export type TransferConfirm = {
+export type TransferBody = {
   amount: string;
   source: string;
   destination: string;

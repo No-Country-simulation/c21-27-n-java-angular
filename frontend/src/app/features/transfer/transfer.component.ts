@@ -9,9 +9,12 @@ import {
   Validators,
 } from '@angular/forms';
 import { SubNavMobileComponent } from '@core/sub-nav-mobile/sub-nav-mobile.component';
+
 import { TransferConfirmComponent } from './components/transfer-confirm/transfer-confirm.component';
-import { TransferConfirm } from './types/transfer-confirm.type';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { TransferService } from './services/transfer.service';
+import { TransferBody } from './types/transfer-confirm.type';
+import { TransferErrorComponent } from './components/transfer-error/transfer-error.component';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-transfer',
@@ -24,16 +27,23 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
     ReactiveFormsModule,
     CommonModule,
     TransferConfirmComponent,
+    TransferErrorComponent,
   ],
   templateUrl: './transfer.component.html',
   styleUrls: ['./transfer.component.scss'],
 })
 export class TransferComponent {
   transferForm: FormGroup;
-  transferBody: TransferConfirm;
+  transferBody: TransferBody;
   showModal = signal(false);
+  onError = false;
+  onErrorMessage = '';
+  private _isLoading = false;
 
-  constructor(private _formBuilder: FormBuilder, private _http: HttpClient) {
+  constructor(
+    private _formBuilder: FormBuilder,
+    private _transfer: TransferService
+  ) {
     this.transferForm = this._formBuilder.group({
       amount: [0, [Validators.required, Validators.min(100)]],
       destination: ['', [Validators.required]],
@@ -92,18 +102,30 @@ export class TransferComponent {
     }, 0);
   }
 
-  // TODO
   onModalConfirmed(confirmed: boolean) {
     this.showModal.set(false);
-    if (confirmed) {
-      // const token = '';
-      // const headers = new HttpHeaders({
-      //   'Content-Type': 'application/json',
-      //   Authorization: `Bearer ${token}`,
-      // });
-      // this._http.post('', this.transferBody, { headers });
 
-      console.log('Transferencia confirmada.');
+    if (confirmed) {
+      this._isLoading = true;
+
+      this._transfer.sendTransfer(this.transferBody).subscribe({
+        next: (value) => {
+          console.log(value);
+        },
+        error: (err: HttpErrorResponse) => {
+          this.onError = true;
+          this.onErrorMessage = err.message;
+
+          setTimeout(() => {
+            this.onError = false;
+          }, 5000);
+
+          console.error(err);
+        },
+        complete: () => {
+          this._isLoading = false;
+        },
+      });
     }
   }
 }
