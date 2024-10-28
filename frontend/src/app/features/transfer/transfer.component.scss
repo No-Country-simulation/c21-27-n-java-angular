@@ -30,7 +30,7 @@ input[type="number"] {
 .transfer {
   @apply flex flex-col gap-8 justify-start items-center max-w-xl mx-auto;
   @apply w-full px-4 py-10;
-  @apply border border-ob-gray/40 rounded-3xl bg-zinc-100;
+  @apply border border-ob-gray/40 rounded-3xl bg-white shadow-lg;
 
   &__amount {
     @apply w-full;

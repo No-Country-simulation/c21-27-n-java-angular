@@ -21,13 +21,14 @@
     </section>
 
     <div class="modal__buttons">
-      <button (click)="cancel()" class="modal__button--cancel">
-        <span class="icon-[heroicons--x-circle-solid]"></span>
-      </button>
       <button (click)="confirm()" class="modal__button--confirm">
         Confirmar
         <span class="icon-[heroicons--arrow-right-circle-solid]"></span>
       </button>
     </div>
+
+    <button (click)="cancel()" class="modal__button-close">
+      <span class="icon-[heroicons--x-circle-solid]"></span>
+    </button>
   </div>
 </div>

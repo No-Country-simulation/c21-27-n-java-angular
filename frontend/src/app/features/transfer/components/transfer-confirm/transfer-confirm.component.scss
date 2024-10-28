@@ -37,7 +37,7 @@
 
   &__buttons {
     @apply mt-8 h-12;
-    @apply flex justify-between items-center gap-4;
+    @apply flex justify-center items-center gap-4;
 
     button {
       @apply h-full p-2 rounded-full bg-gray-200 flex justify-center items-center gap-1 text-center;
@@ -46,14 +46,20 @@
       @apply text-2xl;
     }
 
-    .modal__button--cancel {
-      flex: 1 1;
-      @apply bg-ob-danger-red;
-    }
-
     .modal__button--confirm {
-      flex: 4 1;
-      @apply bg-ob-main-bright-green text-white hover:bg-ob-main-bright-green/80;
+      flex: 1;
+      @apply bg-ob-main-bright-green text-white hover:bg-ob-main-bright-green/80 lg:max-w-[65%];
+    }
+  }
+
+  &__button-close {
+    position: absolute;
+    top: 1vh;
+    right: 1vw;
+    @apply rounded-full h-8 w-8 flex items-center justify-center text-2xl;
+
+    span {
+      @apply w-full h-full text-ob-danger-red hover:text-black/60;
     }
   }
 }
