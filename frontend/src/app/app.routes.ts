@@ -5,7 +5,7 @@ import { LoginComponent } from './core/login/login.component';
 import { DashboardComponent } from './features/dashboard/dashboard.component';
 import { HistoryComponent } from './features/transactions/history/history.component';
 import { TransferComponent } from './features/transfer/transfer.component';
-import { ConfirmTransferComponent } from '@features/transfer/components/confirm-transfer/confirm-transfer.component';
+import { TransferConfirmComponent } from '@features/transfer/components/transfer-confirm/transfer-confirm.component';
 
 export const routes: Routes = [
   {
@@ -36,7 +36,7 @@ export const routes: Routes = [
   {
     path: FEATURES.TRANSFER.CHILDRENS.CONFIRM.path,
     title: FEATURES.TRANSFER.CHILDRENS.CONFIRM.title,
-    component: ConfirmTransferComponent,
+    component: TransferConfirmComponent,
   },
   {
     path: '**',
