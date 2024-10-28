@@ -1,5 +1,5 @@
 <div [ngClass]="[obPadding()]">
-  <header class="header">
+  <section class="header">
     <h2 [ngClass]="[obHeading({ tag: 'h2' }), 'header__title']">
       <a [href]="path.TRANSACTIONS.HISTORY.path" class="header__title__link">
         Últimas Transacciones
@@ -13,9 +13,43 @@
     >
       <option value="test">Octubre</option>
     </select>
-  </header>
+  </section>
 
   <section class="list">
+    <app-transfer-card
+      destination="Test"
+      amount="250"
+      time="5:00"
+    ></app-transfer-card>
+
+    <app-transfer-card
+      destination="Test"
+      amount="250"
+      time="5:00"
+    ></app-transfer-card>
+
+    <app-transfer-card
+      destination="Test"
+      amount="250"
+      time="5:00"
+    ></app-transfer-card>
+    <app-transfer-card
+      destination="Test"
+      amount="250"
+      time="5:00"
+    ></app-transfer-card>
+
+    <app-transfer-card
+      destination="Test"
+      amount="250"
+      time="5:00"
+    ></app-transfer-card>
+
+    <app-transfer-card
+      destination="Test"
+      amount="250"
+      time="5:00"
+    ></app-transfer-card>
     <app-transfer-card
       destination="Test"
       amount="250"
