@@ -11,5 +11,4 @@ import { Component, Input } from '@angular/core';
 export class TransferCardComponent {
   @Input({ required: true }) destination: string = '';
   @Input({ required: true }) amount: string = '';
-  @Input({ required: true }) time: string = '';
 }
