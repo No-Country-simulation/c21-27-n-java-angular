@@ -1,10 +1,17 @@
 <div [ngClass]="[obPadding(), 'user']">
-  <img class="user__logo" src="images/logotipo-text-column@OB.svg" alt="logo" />
+  <img
+    class="user__logo"
+    ngSrc="images/Isologo-text-right@OB.svg"
+    alt="logo"
+    width="200"
+    height="200"
+    priority
+  />
 
   <div class="user__text">
     <p>
-      Hey, <span class="user__text__name">{{ name }}</span>
+      Bienvenido, <span class="user__text__name">{{ name }}</span>
     </p>
-    <p class="user__text__greeting">Bienvenido</p>
+    <p class="user__text__date">{{ date | date : "longDate" }}</p>
   </div>
 </div>
