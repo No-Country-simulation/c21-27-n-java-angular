@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { BehaviorSubject, Observable } from 'rxjs';
+import { LoginResponse } from '../types/login.type';
 
 @Injectable({
   providedIn: 'root',
@@ -16,10 +17,15 @@ export class LoginService {
   public login(loginObj: any): void {
     this.loadingSubject.next(true);
     this.http
-      .post<Response>('https://oinkbank.onrender.com/api/auth/login', loginObj)
+      .post<LoginResponse>(
+        'https://oinkbank.onrender.com/api/auth/login',
+        loginObj
+      )
       .subscribe({
         next: (res) => {
           localStorage.setItem('jwt', res.jwt);
+          localStorage.setItem('accountNames', res.accountNames);
+
           this.loadingSubject.next(false);
           this.router.navigate(['dashboard']);
         },
@@ -33,9 +39,4 @@ export class LoginService {
   public isLoading(): Observable<boolean> {
     return this.loadingSubject.asObservable();
   }
-}
-
-interface Response {
-  accountNames: string;
-  jwt: string;
 }
