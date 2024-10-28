@@ -3,10 +3,10 @@
 }
 
 .user {
-  @apply flex justify-center items-center gap-2;
+  @apply flex flex-col justify-center items-center gap-0;
 
   &__logo {
-    @apply w-20 h-20 overflow-hidden object-contain;
+    @apply w-20 h-20 overflow-hidden object-fill scale-[125%] -mb-4;
   }
 
   &__text {
@@ -16,8 +16,8 @@
       @apply font-bold;
     }
 
-    &__greeting {
-      @apply text-sm text-ob-gray font-normal;
+    &__date {
+      @apply text-xs text-ob-gray font-normal text-center;
     }
   }
 }
