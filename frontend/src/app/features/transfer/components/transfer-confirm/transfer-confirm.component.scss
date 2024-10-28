@@ -1,0 +1,65 @@
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgba(0, 0, 0, 0.7);
+  z-index: 1000;
+}
+
+.modal {
+  @apply w-2/3 lg:w-1/2 relative -translate-y-10;
+  @apply bg-ob-white p-4 rounded-3xl shadow-lg text-center pt-10 px-8;
+
+  &__logo {
+    position: absolute;
+    left: 50%;
+    top: -2.5rem;
+    transform: translateX(-50%);
+  }
+
+  &__title {
+    @apply text-lg font-bold my-2;
+  }
+
+  &__info {
+    @apply flex flex-col justify-start items-center;
+
+    &__label {
+      @apply text-black/80 mb-0 text-sm;
+    }
+
+    &__data {
+      @apply font-bold mb-2;
+    }
+  }
+
+  &__buttons {
+    @apply mt-8 h-12;
+    @apply flex justify-center items-center gap-4;
+
+    button {
+      @apply h-full p-2 rounded-full bg-gray-200 flex justify-center items-center gap-1 text-center;
+    }
+    span {
+      @apply text-2xl;
+    }
+
+    .modal__button--confirm {
+      flex: 1;
+      @apply bg-ob-main-bright-green text-white hover:bg-ob-main-bright-green/80 lg:max-w-[65%];
+    }
+  }
+
+  &__button-close {
+    position: absolute;
+    top: 1vh;
+    right: 1vw;
+    @apply rounded-full h-8 w-8 flex items-center justify-center text-2xl;
+
+    span {
+      @apply w-full h-full text-ob-danger-red hover:text-black/60;
+    }
+  }
+}

@@ -1,0 +1,34 @@
+<div class="modal-overlay">
+  <div class="modal">
+    <img
+      ngSrc="images/Isologo-text-bottom@OB.svg"
+      width="80"
+      height="80"
+      class="modal__logo"
+    />
+
+    <h2 class="modal__title">Confirmar Transferencia</h2>
+
+    <section class="modal__info">
+      <p class="modal__info__label">Cuenta Origen</p>
+      <p class="modal__info__data">{{ transferData.source }}</p>
+
+      <p class="modal__info__label">Cuenta Destino</p>
+      <p class="modal__info__data">{{ transferData.destination }}</p>
+
+      <p class="modal__info__label">Monto</p>
+      <p class="modal__info__data">{{ transferData.amount | currency }}</p>
+    </section>
+
+    <div class="modal__buttons">
+      <button (click)="confirm()" class="modal__button--confirm">
+        Confirmar
+        <span class="icon-[heroicons--arrow-right-circle-solid]"></span>
+      </button>
+    </div>
+
+    <button (click)="cancel()" class="modal__button-close">
+      <span class="icon-[heroicons--x-circle-solid]"></span>
+    </button>
+  </div>
+</div>
