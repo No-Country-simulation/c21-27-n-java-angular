@@ -1,11 +1,19 @@
-:host {
-  @apply flex flex-col gap-4;
-}
+// .showBalance {
+//   @apply flex gap-1 items-center justify-center lg:justify-start;
 
-.showBalance {
-  @apply flex gap-1 items-center justify-center lg:justify-start;
+//   .slug {
+//     @apply text-center lg:text-left text-ob-terciary-dark-green m-0 leading-none;
+//   }
+// }
 
-  .slug {
-    @apply text-center lg:text-left text-ob-terciary-dark-green m-0 leading-none;
+.balance {
+  @apply font-bold text-5xl lg:text-6xl;
+
+  &__currency {
+    @apply text-ob-title-medium-green text-4xl lg:text-5xl;
+
+    &__symbol {
+      @apply text-inherit;
+    }
   }
 }

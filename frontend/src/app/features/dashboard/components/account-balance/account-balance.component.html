@@ -1,4 +1,4 @@
-<div class="showBalance">
+<!-- <div class="showBalance">
   <p class="slug">Tu dinero</p>
   <button (click)="toggleBalanceVisibility()">
     @if (showBalance) {
@@ -7,12 +7,13 @@
     <span class="icon-[heroicons--eye-solid] text-ob-black"></span>
     }
   </button>
-</div>
+</div> -->
 
 <p [ngClass]="['balance', obBalance()]">
-  @if (balance.includes('*') || !showBalance) {
-  ********
-  } @else {
-  {{balance | currency}}
+  @if (balance.includes('*') || !showBalance) { ******** } @else {
+  <span class="balance__currency"
+    >USD <span class="balance__currency__symbol">$</span></span
+  >
+  {{ balance | currency : " " }}
   }
 </p>
