@@ -1,0 +1,12 @@
+.input {
+  @apply p-3 text-xl transition-all bg-transparent border-2 rounded-full outline-none w-full text-ob-terciary-dark-green  focus:ring;
+  &__valid {
+    @apply ring-ob-secondary-light-green;
+  }
+  &__invalid {
+    @apply ring-rose-400 ring;
+  }
+}
+.label {
+  @apply flex items-center justify-start gap-2 text-2xl text-ob-terciary-dark-green;
+}

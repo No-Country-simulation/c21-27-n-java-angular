@@ -1,1 +1,102 @@
-<p>login works!</p>
+<section class="max-w-xl px-5 mx-auto lg:px-0">
+  <form
+    [formGroup]="formLogin"
+    (ngSubmit)="onLogin()"
+    autocomplete="off"
+    class="form"
+  >
+    <div class="flex items-center justify-center">
+      <img
+        class="w-60"
+        src="/images/Isologo-text-right@OB.svg"
+        alt="Isotipo OinkBank"
+      />
+    </div>
+    <div class="flex flex-col gap-3">
+      <div class="flex flex-col gap-1">
+        <label for="user" class="label">
+          <span
+            class="icon-[solar--user-bold-duotone]"
+            role="img"
+            aria-hidden="true"
+          ></span>
+          <span>Usuario</span>
+        </label>
+        <input
+          formControlName="username"
+          name="username"
+          required
+          placeholder="oink.user69"
+          id="user"
+          aria-label="usuario"
+          class="input"
+          [ngClass]="{
+            input__invalid: usernameError(),
+            input__valid: !usernameError(),
+          }"
+          type="text"
+        />
+        <small class="h-2">
+          @if (usernameError()) {
+          <span class="font-semibold textxs text-rose-500"
+            >usuario requerido</span
+          >
+          }
+        </small>
+      </div>
+
+      <div class="flex flex-col gap-1">
+        <label for="pass" class="label">
+          <span
+            class="cursor-pointer"
+            (click)="togglePass()"
+            [class]="iconPassword()"
+            role="img"
+            aria-hidden="true"
+          ></span>
+          <span>Clave</span>
+        </label>
+        <input
+          formControlName="password"
+          name="password"
+          required
+          placeholder="*********"
+          aria-label="clave"
+          id="pass"
+          class="input"
+          [ngClass]="{
+            input__invalid: passwordError(),
+            input__valid: !passwordError(),
+          }"
+          [type]="isOpen() ? 'string' : 'password'"
+        />
+        <small class="h-2">
+          @if (passwordError()) {
+          <span class="font-semibold textxs text-rose-500"
+            >clave requerida</span
+          >
+          }
+        </small>
+      </div>
+      <button
+        type="submit"
+        [disabled]="!formLogin.valid"
+        [ngClass]="{
+          'ring-gray-400 bg-gray-500 opacity-50 cursor-not-allowed':
+            !formLogin.valid,
+          'ring-ob-secondary-light-green bg-ob-main-bright-green':
+            formLogin.valid
+        }"
+        class="grid h-12 py-3 mt-5 text-xl font-medium text-white rounded-full outline-none place-content-center ring"
+      >
+        @if (!isLoading()) { <span>Entrar</span> } @else{
+        <span
+          class="icon-[line-md--loading-twotone-loop] text-4xl"
+          role="img"
+          aria-hidden="true"
+        ></span>
+        }
+      </button>
+    </div>
+  </form>
+</section>
