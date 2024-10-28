@@ -1,12 +1,12 @@
-import { NgClass } from '@angular/common';
-import { Component } from '@angular/core';
-import { BalanceService } from '@shared/services/balance.service';
+import { AsyncPipe, CommonModule, NgClass, NgIf } from '@angular/common';
+import { Component, signal } from '@angular/core';
 import { obPadding } from '@styles/ob-box-model.tv';
 
 import { UserSesionComponent } from '../../core/user-sesion/user-sesion.component';
 import { AccountBalanceComponent } from './components/account-balance/account-balance.component';
 import { RecentsComponent } from './components/recents/recents.component';
 import { ObButtonCircleComponent } from '@shared/components/ob-button-circle/ob-button-circle.component';
+import { BalanceService } from './services/balance.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -17,17 +17,21 @@ import { ObButtonCircleComponent } from '@shared/components/ob-button-circle/ob-
     UserSesionComponent,
     NgClass,
     ObButtonCircleComponent,
+    AsyncPipe,
+    CommonModule,
   ],
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.scss',
 })
 export class DashboardComponent {
   obPadding = obPadding;
-
   balance = '';
 
-  constructor(private balanceService: BalanceService) {
-    const balance = this.balanceService.getBalance();
-    this.balance = String(balance);
+  constructor(private _balanceService: BalanceService) {}
+
+  ngOnInit() {
+    this._balanceService.get().subscribe((res) => {
+      this.balance = String(res.balance);
+    });
   }
 }

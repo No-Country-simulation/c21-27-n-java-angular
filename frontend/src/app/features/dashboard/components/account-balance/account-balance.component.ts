@@ -12,7 +12,7 @@ import { OB_TEXT_BALANCE } from '@styles/ob-text.tv';
 })
 export class AccountBalanceComponent {
   obBalance = OB_TEXT_BALANCE;
-  @Input({ required: true }) balance = '';
+  @Input({ required: true }) balance = '0.00';
 
   showBalance = true;
 
