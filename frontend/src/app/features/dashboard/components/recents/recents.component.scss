@@ -1,6 +1,6 @@
 :host {
-  @apply block mt-20 lg:mt-0 bg-zinc-100/80 rounded-3xl py-8 px-4 pb-24 backdrop-blur-lg border-4 border-red-200/30;
-  @apply shadow;
+  @apply block mt-20 lg:mt-0 bg-zinc-100/80 rounded-3xl py-8 px-4 pb-24 backdrop-blur-lg border-4 border-zinc-300/30;
+  @apply shadow-lg shadow-black/5;
 }
 
 .header {
