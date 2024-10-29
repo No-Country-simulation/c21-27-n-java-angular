@@ -1,0 +1,9 @@
+.cont {
+  @apply w-full flex flex-col p-5 mt-10 items-start justify-center border rounded-sm shadow border-gray-50;
+}
+.item {
+  @apply flex flex-col;
+}
+.label {
+  @apply text-xs text-gray-500;
+}

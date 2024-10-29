@@ -5,6 +5,7 @@ import { obBtnOutlined } from '@styles/ob-button.tv';
 import { OB_TEXT_HEADINGS } from '@styles/ob-text.tv';
 import { TransferCardComponent } from './components/transfer-card/transfer-card.component';
 import { FEATURES } from '@config/paths';
+import { mockData } from './data.mock';
 
 @Component({
   selector: 'app-recents',
@@ -15,7 +16,7 @@ import { FEATURES } from '@config/paths';
 })
 export class RecentsComponent {
   path = FEATURES;
-
+  data = mockData;
   obPadding = obPadding;
   obHeading = OB_TEXT_HEADINGS;
   obButtonOutline = obBtnOutlined;

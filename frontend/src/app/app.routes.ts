@@ -6,6 +6,7 @@ import { DashboardComponent } from './features/dashboard/dashboard.component';
 import { HistoryComponent } from './features/transactions/history/history.component';
 import { TransferComponent } from './features/transfer/transfer.component';
 import { TransferConfirmComponent } from '@features/transfer/components/transfer-confirm/transfer-confirm.component';
+import { HistoryItemComponent } from '@features/dashboard/components/history-item/history-item.component';
 
 export const routes: Routes = [
   {
@@ -37,6 +38,11 @@ export const routes: Routes = [
     path: FEATURES.TRANSFER.CHILDRENS.CONFIRM.path,
     title: FEATURES.TRANSFER.CHILDRENS.CONFIRM.title,
     component: TransferConfirmComponent,
+  },
+  {
+    path: FEATURES.HISTORY.path + '/:id',
+    title: FEATURES.HISTORY.title,
+    component: HistoryItemComponent,
   },
   {
     path: '**',
