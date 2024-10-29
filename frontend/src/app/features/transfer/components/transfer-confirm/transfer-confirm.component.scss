@@ -9,7 +9,7 @@
 }
 
 .modal {
-  @apply w-2/3 lg:w-1/2 relative -translate-y-10;
+  @apply w-2/3 lg:w-1/4 relative -translate-y-10;
   @apply bg-ob-white p-4 rounded-3xl shadow-lg text-center pt-10 px-8;
 
   &__logo {
@@ -48,7 +48,7 @@
 
     .modal__button--confirm {
       flex: 1;
-      @apply bg-ob-main-bright-green text-white hover:bg-ob-main-bright-green/80 lg:max-w-[65%];
+      @apply bg-ob-main-bright-green text-white hover:bg-ob-main-bright-green/80 lg:max-w-[50%];
     }
   }
 
