@@ -152,5 +152,5 @@
 html,
 body {
   font-family: "Lufga", sans-serif;
-  @apply bg-neutral-50;
+  @apply bg-gradient-to-tr from-green-50 to-red-50;
 }

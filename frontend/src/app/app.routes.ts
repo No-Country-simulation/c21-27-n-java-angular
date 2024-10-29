@@ -3,7 +3,6 @@ import { CORE, FEATURES } from '@config/paths';
 
 import { LoginComponent } from './core/login/login.component';
 import { DashboardComponent } from './features/dashboard/dashboard.component';
-import { HistoryComponent } from './features/transactions/history/history.component';
 import { TransferComponent } from './features/transfer/transfer.component';
 import { TransferConfirmComponent } from '@features/transfer/components/transfer-confirm/transfer-confirm.component';
 
@@ -22,11 +21,6 @@ export const routes: Routes = [
     path: FEATURES.DASHBOARD.path,
     component: DashboardComponent,
     title: FEATURES.DASHBOARD.title,
-  },
-  {
-    path: FEATURES.TRANSACTIONS.HISTORY.path,
-    component: HistoryComponent,
-    title: FEATURES.TRANSACTIONS.HISTORY.title,
   },
   {
     path: FEATURES.TRANSFER.path,

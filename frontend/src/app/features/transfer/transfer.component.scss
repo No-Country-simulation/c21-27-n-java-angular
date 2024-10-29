@@ -1,5 +1,5 @@
 :host {
-  @apply block text-center px-4;
+  @apply block text-center px-4 min-h-screen;
 }
 
 h1 {
@@ -29,8 +29,8 @@ input[type="number"] {
 
 .transfer {
   @apply flex flex-col gap-8 justify-start items-center max-w-xl mx-auto;
-  @apply w-full px-4 py-10;
-  @apply border border-ob-gray/40 rounded-3xl bg-white shadow-lg;
+  @apply w-full px-4 py-10 lg:py-16 lg:px-10;
+  @apply border border-ob-gray/40 rounded-3xl bg-white/40 shadow-lg;
 
   &__amount {
     @apply w-full;

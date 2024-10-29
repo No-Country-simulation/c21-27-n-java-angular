@@ -11,6 +11,7 @@ import { obPadding } from '@styles/ob-box-model.tv';
 })
 export class UserSesionComponent {
   obPadding = obPadding;
+  username = localStorage.getItem('accountNames') || 'Anónimo';
 
   @Input({ required: true }) name = '';
   date = Date.now();

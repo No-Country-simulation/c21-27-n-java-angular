@@ -6,7 +6,7 @@
   @apply flex flex-col gap-10;
 
   .balance {
-    @apply my-16;
+    @apply my-16 mb-10 lg:mb-16;
     @apply flex flex-col gap-10 justify-center items-center;
   }
 
