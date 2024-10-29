@@ -102,6 +102,7 @@ public class AccountController {
     private AccountResponse entityToResponse(Account entity) {
         var response = new AccountResponse();
         BeanUtils.copyProperties(entity, response);
+        response.setUserId(entity.getUser().getId().toString());
         return response;
     }
 
