@@ -1,5 +1,5 @@
 .footer {
-  @apply px-5 pt-16 pb-48 lg:px-20 lg:py-16 bg-ob-black mt-0 lg:mt-0;
+  @apply px-5 pt-16 pb-48 lg:px-20 lg:py-16 bg-zinc-200 mt-32 lg:mt-20;
 
   &__wrapper {
     @apply max-w-4xl mx-auto;
@@ -10,14 +10,14 @@
   }
 
   &__line {
-    @apply my-2 border-ob-secondary-light-green;
+    @apply my-2 border-zinc-100;
   }
 
   &__labels {
     @apply flex items-center justify-between;
 
     &__tw {
-      @apply flex items-center gap-1 text-ob-main-bright-green;
+      @apply flex items-center gap-1 text-ob-black;
     }
 
     &__flag__container {
@@ -25,7 +25,7 @@
     }
 
     &__flag {
-      @apply flex items-center gap-1 text-ob-secondary-light-green;
+      @apply flex items-center gap-1 text-ob-black;
     }
   }
 

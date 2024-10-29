@@ -11,17 +11,17 @@ import { UserSocialComponent } from './components/user-social/user-social.compon
 export class FooterComponent {
   users = [
     {
-      name: 'Avedaño Andres',
+      name: 'Avendaño Andres',
       role: 'Backend Developer',
       in: 'https://www.linkedin.com/in/andr%C3%A9s-avenda%C3%B1o-25100a73/',
     },
+    // {
+    //   name: 'Betancur Andres',
+    //   role: 'Frontend Developer',
+    //   in: 'https://www.linkedin.com/in/felix-andres-betancur-9389ab1a5/',
+    // },
     {
-      name: 'Betancur Andres',
-      role: 'Frontend Developer',
-      in: 'https://www.linkedin.com/in/felix-andres-betancur-9389ab1a5/',
-    },
-    {
-      name: 'Romero Nicolas',
+      name: 'Olmos Nicolas',
       role: 'Frontend Developer',
       in: 'https://www.linkedin.com/in/jnolmos/',
     },
