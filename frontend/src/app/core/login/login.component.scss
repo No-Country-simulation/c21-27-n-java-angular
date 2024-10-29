@@ -1,5 +1,6 @@
 .input {
-  @apply p-3 text-xl transition-all bg-transparent border-2 rounded-full outline-none w-full text-ob-terciary-dark-green  focus:ring;
+  @apply p-3 text-xl transition-all bg-transparent border-2 rounded-full outline-none w-full text-ob-terciary-dark-green focus:ring;
+  @apply flex justify-start items-center pl-5 leading-none;
   &__valid {
     @apply ring-ob-secondary-light-green;
   }
@@ -8,5 +9,5 @@
   }
 }
 .label {
-  @apply flex items-center justify-start gap-2 text-2xl text-ob-terciary-dark-green;
+  @apply flex items-center justify-start gap-2 text-ob-terciary-dark-green;
 }
