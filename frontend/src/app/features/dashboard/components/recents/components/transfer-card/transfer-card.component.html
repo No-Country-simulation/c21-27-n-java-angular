@@ -1,7 +1,15 @@
-<a href="#" class="transaction">
-  <p class="destination">{{ destination }}</p>
-
+<a
+  [routerLink]="['/history/' + body?.id]"
+  routerLinkActive="router-link-active"
+  class="w-full transition-colors transaction"
+>
+  <div class="flex flex-col text-start">
+    <p class="destination">{{ body?.destination }}</p>
+    <small class="text-xs text-gray-500">{{
+      body?.time | date : "MMM d, h:mm a"
+    }}</small>
+  </div>
   <div class="details">
-    <p class="details__amount">{{ amount | currency }}</p>
+    <p class="details__amount">{{ body?.amount | currency }}</p>
   </div>
 </a>

@@ -20,4 +20,5 @@ export const FEATURES = {
       },
     },
   },
+  HISTORY: { path: 'history', title: 'Historial | OinkBank' },
 };
